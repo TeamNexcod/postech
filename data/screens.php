@@ -1,0 +1,26 @@
+<?php
+// Screenshots in assets/img/screens/<id>.png, taken off the running software at 1366px wide.
+return [
+    ['id' => 'dashboard',        'title' => 'Software dashboard',   'w' => 1349, 'h' => 646,
+     'caption' => 'The first screen after login: today\'s sales and profit, what customers owe, what is close to expiry, and a button for every section.'],
+    ['id' => 'product-search',   'title' => 'Product search',       'w' => 1366, 'h' => 642,
+     'caption' => 'Type two or three letters of a name, brand or salt, and the matching medicines appear with their stock, batch and MRP.'],
+    ['id' => 'inventory',        'title' => 'Inventory',            'w' => 1351, 'h' => 646,
+     'caption' => 'Every medicine with its batches, stock and rates. Change a row where it stands, or bring in the whole list from Excel.'],
+    ['id' => 'billing',          'title' => 'Billing screen',       'w' => 1366, 'h' => 643,
+     'caption' => 'The billing counter. Find a medicine, pick the batch, choose strips or loose tablets, then print the bill or send it.'],
+    ['id' => 'purchase-orders',  'title' => 'Purchase entry',       'w' => 1366, 'h' => 706,
+     'caption' => 'A distributor\'s bill entered line by line, with batch, expiry, free goods and discount. Stock goes up when it is saved.'],
+    ['id' => 'sales-reports',    'title' => 'Sales reports',        'w' => 1366, 'h' => 704,
+     'caption' => 'Sales by day, by bill, by customer or by medicine, with the profit on each worked out from what that batch cost.'],
+    ['id' => 'drug-registers',   'title' => 'Drug registers',       'w' => 1366, 'h' => 704,
+     'caption' => 'Schedule H and H1 registers, filled in from the bills with the doctor and the patient, ready to show an inspector.'],
+    ['id' => 'purchase-reports', 'title' => 'Purchase reports',     'w' => 1366, 'h' => 701,
+     'caption' => 'The purchase register, totals for each supplier, purchase returns, and purchases month by month.'],
+    ['id' => 'stock-reports',    'title' => 'Stock reports',        'w' => 1366, 'h' => 705,
+     'caption' => 'Current stock, stock by rack, near-expiry, fast and slow sellers, low stock, and every movement of every medicine.'],
+    ['id' => 'account-reports',  'title' => 'Account reports',      'w' => 1366, 'h' => 703,
+     'caption' => 'Profit and loss, cash flow, expenses, what is owed to you and what you owe, and a summary for each day.'],
+    ['id' => 'gst-reports',      'title' => 'GST reports',          'w' => 1366, 'h' => 705,
+     'caption' => 'GSTR-1, the HSN summary, purchase ITC, sales returns and the tax payable, for whatever period you choose.'],
+];

@@ -1,0 +1,13 @@
+{
+  "name": "Nexcod POS",
+  "short_name": "Nexcod",
+  "description": "Pharmacy billing and stock software for medical stores in India.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#0b2451",
+  "icons": [
+    { "src": "/assets/img/brand/logo-128.png", "sizes": "128x128", "type": "image/png" },
+    { "src": "/assets/img/brand/logo.png", "sizes": "500x500", "type": "image/png" }
+  ]
+}

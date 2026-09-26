@@ -1,0 +1,36 @@
+<!doctype html>
+<!--
+  Source of assets/img/brand/og-image.png, the picture shown when a link to the site is shared.
+  Render it at 1200 x 630, for example with Playwright:
+    page.setViewportSize({ width: 1200, height: 630 }); page.goto('.../tools/og-image.html'); page.screenshot(...)
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
+  body { display: grid; grid-template-columns: 560px 1fr; background: #fff; }
+  .l { display: flex; flex-direction: column; padding: 64px 0 56px 72px; }
+  .brand { font-size: 30px; gap: 14px; }
+  .brand img { width: 52px; height: 52px; }
+  h1 { margin-top: 64px; font-size: 58px; line-height: 1.05; letter-spacing: -0.03em; }
+  h1 span { display: block; margin-top: 14px; color: var(--ink-3); font-size: 28px; font-weight: 400; letter-spacing: -0.01em; }
+  .foot-line { margin-top: auto; display: flex; gap: 26px; color: var(--ink-2); font-size: 21px; }
+  .foot-line b { color: var(--ink); font-weight: 600; }
+  .r { position: relative; border-left: 1px solid var(--line); background: var(--paper-2); }
+  .r img { position: absolute; left: 44px; top: 70px; width: 1000px; max-width: none; border: 1px solid #c4ccd8; border-radius: 6px; }
+  .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 10px; background: var(--navy); }
+  .bar::after { content: ""; position: absolute; left: 0; top: 0; width: 180px; height: 10px; background: var(--red); }
+</style>
+</head>
+<body>
+  <div class="l">
+    <span class="brand"><img src="../assets/img/brand/logo-128.png" alt=""><span>Nexcod <b>POS</b></span></span>
+    <h1>Pharmacy billing software<span>GST bills by batch and expiry, for medical stores in India</span></h1>
+    <p class="foot-line"><span><b>Free plan</b> 100 bills</span><span>nexcodpos.in</span></p>
+  </div>
+  <div class="r"><img src="../assets/img/screens/product-search.png" alt=""></div>
+  <div class="bar"></div>
+</body>
+</html>
