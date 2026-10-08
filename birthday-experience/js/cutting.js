@@ -246,7 +246,7 @@ function depthCurve(p) {
 // ---------------------------------------------------------------------------------------
 // The sequence
 // ---------------------------------------------------------------------------------------
-export function createCutting({ gsap, rig, cake, stage, sound, quality, reduced }) {
+export function createCutting({ gsap, rig, cake, stage, quality, reduced }) {
   const knife = createKnife();
   const crumbs = createCrumbs(quality.mobile ? 40 : 80);
   stage.scene.add(knife.root, crumbs.mesh);
@@ -294,7 +294,6 @@ export function createCutting({ gsap, rig, cake, stage, sound, quality, reduced 
         'sponge', 0.011
       );
     }
-    sound.crumb();
   }
 
   function emitCream(idx, n) {
@@ -316,14 +315,12 @@ export function createCutting({ gsap, rig, cake, stage, sound, quality, reduced 
     const theta = CUTS[idx];
     // tip meets the glaze
     await tween(k, { yMid: TOP_Y + 0.004, saw: 0.06, tilt: -0.1, duration: push > 2 ? 1.0 : 0.7, ease: 'power2.inOut' });
-    sound.knifeContact();
     emitCream(idx, push > 2 ? 4 : 2);
     cut.uCutSlope.value[idx] = -Math.sin(k.tilt);
     // resistance: a short stall as the edge bites
     await tween(k, { yMid: TOP_Y - 0.006, duration: 0.22, ease: 'power1.in' });
-    sound.cutStart();
     const st = { p: 0 };
-    let lastEmit = TOP_Y, lastSaw = k.saw;
+    let lastEmit = TOP_Y;
     const y0 = k.yMid;
     await tween(st, {
       p: 1, duration: push, ease: 'none',
@@ -338,8 +335,6 @@ export function createCutting({ gsap, rig, cake, stage, sound, quality, reduced 
         cut.uCutOpen.value[idx] = 0.0075 * smoothstep(0, 0.06, p);
         cut.uCutBulge.value[idx] = 0.007 * smoothstep(0, 0.15, p);
         knife.smearMat.opacity = Math.max(knife.smearMat.opacity, smoothstep(0.05, 0.9, g) * 0.95);
-        sound.cutLevel(0.35 + Math.min(1, Math.abs(k.saw - lastSaw) * 60));
-        lastSaw = k.saw;
         const yRim = k.yMid - 0.5 * Math.sin(k.tilt);
         if (lastEmit - yRim > (push > 2 ? 0.075 : 0.11) && yRim > 0.05) {
           lastEmit = yRim;
@@ -347,7 +342,6 @@ export function createCutting({ gsap, rig, cake, stage, sound, quality, reduced 
         }
       },
     });
-    sound.cutStop();
     // bottom: blade meets the board
     await tween(k, { yMid: BOTTOM_Y + 0.003, duration: 0.14, ease: 'sine.out' });
     // exit: lift and draw back toward the handle
@@ -406,7 +400,6 @@ export function createCutting({ gsap, rig, cake, stage, sound, quality, reduced 
       stage.bokeh.enabled = true;
       gsap.to(stage.bokeh.uniforms.aperture, { value: 0.012, duration: 0.6 });
     }
-    sound.knifeIn();
     await tween(k, { t: 1, duration: 1.3, ease: 'power3.out' });
     await wait(0.45);
     // 3. focus pulls to the blade
@@ -463,7 +456,6 @@ export function createCutting({ gsap, rig, cake, stage, sound, quality, reduced 
       tweenUniform(cut.uCutBulge, i, 0.0015, { duration: 0.8 });
     }
     cake.faceExpose.forEach((e) => gsap.to(e, { value: 1, duration: 1.4 * speed, delay: 0.25 * speed, ease: 'power1.inOut' }));
-    sound.slide();
     // break free: a small jolt and a tilt, as if pried loose
     await tween(st, { out: 0.06, tip: 0.03, duration: 0.5, ease: 'power2.out', onUpdate: apply });
     for (let i = 0; i < 4; i++) {

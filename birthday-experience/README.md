@@ -1,7 +1,7 @@
-# Happy Birthday, Amit — a four-screen birthday film
+# Happy Birthday, Shining Star — a four-screen birthday film
 
 A small interactive, cinematic birthday experience built from the
-"Amit — Realistic Birthday Experience" spec: a dark studio intro, a cake reveal,
+"Realistic Birthday Experience" spec (made for Shining Star): a dark studio intro, a cake reveal,
 candles, a weighted knife cut with a separating slice, and a celebration with
 fireworks.
 
@@ -10,7 +10,7 @@ instead of loading separate pages:
 
 | # | Screen | What happens |
 |---|--------|--------------|
-| 1 | **Arrival** | Fade up from black; blue volumetric beams, drifting dust and soft bokeh; "Happy Birthday, Amit"; **Begin the Surprise**. |
+| 1 | **Arrival** | Fade up from black; blue volumetric beams, drifting dust and soft bokeh; "Happy Birthday, Shining Star"; **Begin the Surprise**. |
 | 2 | **The Cake** | The camera moves forward and down into the set while the studio lights come up; "Your cake is ready." **Light the Moment** ignites four candles one by one, then **Cut the Cake**. |
 | 3 | **The Cut** | The knife enters from the right out of focus, focus pulls to the blade, it approaches at an angle, the tip meets the glaze, and the blade is pushed through with weighted easing and a little sawing. The frosting opens exactly where the steel is, cream lips rise, crumbs fall, a second cut follows, and the slice is drawn out with mass, wobbles and settles; the camera gives it a hero moment. |
 | 4 | **Celebration** | Wider shot, fireworks in the distance, a light fall of foil confetti, the title, the birthday message and **Replay**. |
@@ -51,9 +51,9 @@ js/scene.js         renderer, studio set, lights, environment reflections, post-
 js/cake.js          procedural cake, glaze and drips, decorations, topper, candles and flames, cut shader
 js/cutting.js       knife model, crumbs, and the choreography of the cut and the slice
 js/effects.js       beams, dust, bokeh, fireworks, confetti
-js/audio.js         all sound, synthesised with Web Audio
+js/audio.js         candle-fire and fireworks sound, synthesised with Web Audio
 js/textures.js      canvas-painted textures (sponge cross-section, frosting relief, wax, steel...)
-js/topper-font.js   Droid Serif Bold, cut down to the letters A, M, I, T
+js/topper-font.js   Droid Serif Bold, cut down to the letters the topper uses
 js/util.js          seeded random numbers and noise
 tools/              single-file build for OneCompiler
 onecompiler/        the generated single file
@@ -65,8 +65,8 @@ at start-up, which also keeps the page light (about 130 KB of our own code).
 **The cake.** A real 3D cake, not CSS: an ivory frosted cylinder with a rounded top edge and
 small irregularities (noise in radius and top height, a frosting foot at the base, scraper
 marks in patches), a glossy blueberry glaze with uneven drips of different lengths, piped
-rosettes, blueberries with their dusty bloom (sheen), silver sugar pearls, a mirror-gold
-"AMIT" topper on two stakes pushed into the cake, and four spiral wax candles. All of it is
+rosettes, blueberries with their dusty bloom (sheen), silver sugar pearls, a mirror-gold acrylic
+"SHINING STAR" topper with a star, on two stakes pushed into the cake, and four spiral wax candles. All of it is
 lit with PBR materials and a pre-filtered environment that matches the set's lights.
 
 **The cut.** The cake is built from the start as two pieces — the body and the slice — whose
@@ -85,11 +85,7 @@ rather than scaling. Each candle carries a warm flickering point light (two on p
 right, a soft hemispheric fill, and warm candle light; bloom is limited to the brightest
 values (flames, glints), and an HDR guard stops any stray pixel from flaring.
 
-**Sound** (mute button top-right, remembered between visits): an ambient bed, a reveal
-swell, ignition and a crackling fire bed, a metallic contact ring as the blade meets the
-glaze, a soft cutting texture that follows the sawing, crumb ticks, a celebratory impact,
-and distant fireworks whose bangs arrive a little after their flashes. Audio only starts
-after the first click, as browsers require.
+**Sound** is kept to two cues only (mute button top-right, remembered between visits): the soft crackle of the candle flames and the distant fireworks, whose bangs arrive a little after their flashes. Audio only starts after the first click, as browsers require.
 
 **Phones and slower devices.** Shots are described by a subject radius, and the camera backs
 off whenever the subject wouldn't fit the viewport, so portrait phones never crop the cake,

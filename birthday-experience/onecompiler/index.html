@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#03050a">
   <meta name="color-scheme" content="dark">
-  <title>Happy Birthday, Amit</title>
-  <meta name="description" content="A short interactive birthday film for Amit: a cake, four candles, one careful cut, and a celebration.">
+  <title>Happy Birthday, Shining Star</title>
+  <meta name="description" content="A short interactive birthday film for Shining Star: a cake, four candles, one careful cut, and a celebration.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-/* Amit — birthday film. UI overlay only; everything visual lives in WebGL. */
+/* Shining Star — birthday film. UI overlay only; everything visual lives in WebGL. */
 
 :root {
   --ink: #e9eef7;
@@ -387,7 +387,7 @@ button:focus-visible {
 
     <section class="screen screen--intro" data-screen="intro" aria-hidden="true">
       <p class="eyebrow reveal-line">A small film, made for one person</p>
-      <h1 class="hero-title split" aria-label="Happy Birthday, Amit">Happy Birthday, <em>Amit</em></h1>
+      <h1 class="hero-title split" aria-label="Happy Birthday, Shining Star">Happy Birthday, <em>Shining Star</em></h1>
       <p class="lede reveal-line">Sound on, if you can. Take a breath.</p>
       <button class="btn reveal-line" id="beginBtn" type="button"><span class="btn__label">Begin the Surprise</span></button>
     </section>
@@ -398,13 +398,13 @@ button:focus-visible {
         <button class="btn reveal-line" id="lightBtn" type="button"><span class="btn__label">Light the Moment</span></button>
       </div>
       <div class="caption-block" data-step="wish">
-        <p class="caption reveal-line">Make a wish, Amit.</p>
+        <p class="caption reveal-line">Make a wish, Shining Star.</p>
         <button class="btn reveal-line" id="cutBtn" type="button"><span class="btn__label">Cut the Cake</span></button>
       </div>
     </section>
 
     <section class="screen screen--final" data-screen="final" aria-hidden="true">
-      <h2 class="final-title split" aria-label="Happy Birthday, Amit">Happy Birthday, <em>Amit</em></h2>
+      <h2 class="final-title split" aria-label="Happy Birthday, Shining Star">Happy Birthday, <em>Shining Star</em></h2>
       <p class="message reveal-line">May this year bring you great people, unforgettable memories, peaceful days, big wins and plenty of reasons to smile. Here’s to your next chapter.</p>
       <button class="btn btn--quiet reveal-line" id="replayBtn" type="button"><span class="btn__label">Replay</span></button>
     </section>
@@ -415,7 +415,7 @@ button:focus-visible {
     </div>
 
     <div class="fallback" id="fallback" hidden>
-      <h1 class="hero-title">Happy Birthday, <em>Amit</em></h1>
+      <h1 class="hero-title">Happy Birthday, <em>Shining Star</em></h1>
       <p class="message">May this year bring you great people, unforgettable memories, peaceful days, big wins and plenty of reasons to smile. Here’s to your next chapter.</p>
       <p class="fallback__note">This browser couldn’t start 3D graphics (WebGL), so the cake is staying in the kitchen. Try a recent Chrome, Safari, Edge or Firefox.</p>
     </div>
@@ -995,7 +995,7 @@ import { Font } from "three/addons/loaders/FontLoader.js";
 import { TextGeometry } from "three/addons/geometries/TextGeometry.js";
 
 // js/topper-font.js
-var topper_font_default = { "glyphs": { "A": { "x_min": 5.8125, "x_max": 1046.21875, "ha": 1046, "o": "m 303 326 l 262 206 q 251 167 257 189 q 245 127 245 144 q 251 103 245 113 q 265 87 256 93 q 285 77 274 80 q 308 73 296 73 l 367 73 l 367 0 l 5 0 l 5 73 l 22 73 q 56 77 41 73 q 84 93 71 82 q 109 124 98 104 q 134 175 121 143 l 435 992 l 625 992 l 916 173 q 937 125 926 144 q 961 94 948 105 q 989 78 975 83 q 1021 73 1004 73 l 1046 73 l 1046 0 l 587 0 l 587 73 l 642 73 q 663 76 652 73 q 682 86 673 80 q 696 103 690 92 q 701 127 701 113 q 697 160 701 144 q 689 187 693 175 l 640 326 l 303 326 m 539 639 q 524 689 532 662 q 508 742 516 715 q 493 796 500 769 q 481 847 486 823 q 467 801 475 826 q 449 749 458 776 q 431 696 440 723 q 414 645 422 670 l 332 411 l 612 411 l 539 639 " }, "M": { "x_min": 38.453125, "x_max": 1283.875, "ha": 1323, "o": "m 839 0 l 839 73 l 853 73 q 891 76 874 73 q 918 87 908 79 q 935 110 929 95 q 940 151 940 126 l 940 855 l 660 0 l 565 0 l 271 855 l 271 164 q 278 116 271 134 q 299 89 286 99 q 331 76 312 80 q 374 73 350 73 l 383 73 l 383 0 l 38 0 l 38 73 l 96 73 q 124 76 111 73 q 147 87 137 79 q 162 112 157 96 q 168 156 168 129 l 168 833 q 162 878 168 861 q 147 903 157 895 q 124 915 137 912 q 96 918 111 918 l 38 918 l 38 992 l 438 992 l 669 320 l 891 992 l 1283 992 l 1283 918 l 1225 918 q 1197 915 1210 918 q 1175 903 1184 912 q 1160 876 1165 893 q 1155 828 1155 858 l 1155 164 q 1160 116 1155 134 q 1175 89 1165 99 q 1197 76 1184 80 q 1225 73 1210 73 l 1283 73 l 1283 0 l 839 0 " }, "I": { "x_min": 38.453125, "x_max": 517.953125, "ha": 557, "o": "m 38 0 l 38 73 l 96 73 q 125 76 112 73 q 147 89 138 80 q 162 116 157 99 q 168 164 168 134 l 168 827 q 162 875 168 857 q 147 902 157 892 q 125 915 138 911 q 96 918 112 918 l 38 918 l 38 992 l 517 992 l 517 918 l 459 918 q 431 915 444 918 q 408 902 418 911 q 393 875 399 892 q 388 827 388 857 l 388 164 q 393 116 388 134 q 408 89 399 99 q 431 76 418 80 q 459 73 444 73 l 517 73 l 517 0 l 38 0 " }, "T": { "x_min": 13, "x_max": 893, "ha": 907, "o": "m 563 164 q 568 116 563 134 q 584 89 574 99 q 606 76 593 80 q 634 73 619 73 l 692 73 l 692 0 l 213 0 l 213 73 l 271 73 q 300 76 287 73 q 322 89 313 80 q 337 116 332 99 q 343 164 343 134 l 343 907 l 231 907 q 179 900 200 907 q 144 881 158 893 q 125 850 131 868 q 116 809 118 832 l 106 723 l 13 723 l 20 992 l 886 992 l 893 723 l 800 723 l 789 809 q 780 850 787 832 q 761 881 774 868 q 726 900 747 893 q 674 907 705 907 l 563 907 l 563 164 " } }, "cssFontWeight": "bold", "ascender": 1290, "underlinePosition": -154, "cssFontStyle": "normal", "boundingBox": { "yMin": -387, "xMin": -289.125, "yMax": 1359, "xMax": 1773 }, "resolution": 1e3, "original_font_information": { "postscript_name": "DroidSerif-Bold", "version_string": "Version 1.00 build 107", "vendor_url": "http://www.ascendercorp.com/", "full_font_name": "Droid Serif Bold", "font_family_name": "Droid Serif", "copyright": "Digitized data copyright \xA9 2006, Google Corporation.", "description": "", "trademark": "Droid is a trademark of Google and may be registered in certain jurisdictions.", "designer": "", "designer_url": "http://www.ascendercorp.com/typedesigners.html", "unique_font_identifier": "Ascender - Droid Serif Bold", "license_url": "http://ascendercorp.com/eula10.html", "license_description": "This font software is the valuable property of Ascender Corporation and/or its suppliers and its use by you is covered under the terms of a license agreement. This font software is licensed to you by Ascender Corporation for your personal or business use on up to five personal computers. You may not use this font software on more than five personal computers unless you have obtained a license from Ascender to do so. Except as specifically permitted by the license, you may not copy this font software.\n\nIf you have any questions, please review the license agreement you received with this font software, and/or contact Ascender Corporation. \n\nContact Information:\nAscender Corporation\nWeb http://www.ascendercorp.com/", "manufacturer_name": "Ascender Corporation", "font_sub_family_name": "Bold" }, "descender": -328, "familyName": "Droid Serif", "lineHeight": 1617, "underlineThickness": 102 };
+var topper_font_default = { "glyphs": { "S": { "x_min": 41.203125, "x_max": 745, "ha": 814, "o": "m 366 -14 q 210 3 273 -14 q 110 49 148 21 q 57 111 73 76 q 41 179 41 146 q 54 240 41 215 q 89 280 67 264 q 139 302 111 295 q 198 309 168 309 q 212 204 198 249 q 252 129 227 159 q 312 83 277 99 q 388 68 347 68 q 461 80 429 68 q 515 112 493 91 q 549 160 538 132 q 561 219 561 187 q 546 282 561 254 q 503 333 532 309 q 431 377 474 356 q 329 423 387 399 q 206 485 256 453 q 126 553 156 516 q 82 632 95 590 q 69 726 69 675 q 94 841 69 790 q 166 930 120 893 q 273 986 211 966 q 409 1006 336 1006 q 542 993 486 1006 q 634 959 597 980 q 688 908 670 937 q 705 844 705 878 q 695 799 705 820 q 663 762 684 778 q 609 738 641 746 q 534 729 577 729 q 526 792 534 758 q 501 854 519 825 q 455 902 483 883 q 387 921 427 921 q 334 913 359 921 q 290 888 309 904 q 260 848 271 872 q 250 792 250 824 q 259 737 250 763 q 294 687 269 712 q 364 637 320 662 q 479 584 408 613 q 601 524 550 555 q 683 459 651 494 q 730 382 715 424 q 745 289 745 340 q 718 166 745 222 q 642 70 692 110 q 523 8 592 30 q 366 -14 453 -14 " }, "H": { "x_min": 38.453125, "x_max": 1097.859375, "ha": 1137, "o": "m 618 0 l 618 73 l 678 73 q 705 76 692 73 q 728 89 718 80 q 743 116 738 99 q 749 164 749 134 l 749 475 l 387 475 l 387 164 q 392 116 387 134 q 408 89 398 99 q 430 76 417 80 q 458 73 443 73 l 517 73 l 517 0 l 38 0 l 38 73 l 96 73 q 124 76 111 73 q 147 89 137 80 q 162 116 157 99 q 168 164 168 134 l 168 833 q 162 877 168 861 q 146 903 156 894 q 123 915 136 911 q 96 918 111 918 l 38 918 l 38 992 l 517 992 l 517 918 l 458 918 q 430 915 443 918 q 408 902 417 911 q 392 875 398 892 q 387 827 387 857 l 387 560 l 749 560 l 749 827 q 743 875 749 857 q 728 902 738 892 q 705 915 718 911 q 678 918 692 918 l 618 918 l 618 992 l 1097 992 l 1097 918 l 1039 918 q 1012 915 1025 918 q 989 902 999 911 q 974 875 979 892 q 969 827 969 857 l 969 156 q 974 112 969 129 q 990 87 980 96 q 1012 76 1000 79 q 1039 73 1025 73 l 1097 73 l 1097 0 l 618 0 " }, "I": { "x_min": 38.453125, "x_max": 517.953125, "ha": 557, "o": "m 38 0 l 38 73 l 96 73 q 125 76 112 73 q 147 89 138 80 q 162 116 157 99 q 168 164 168 134 l 168 827 q 162 875 168 857 q 147 902 157 892 q 125 915 138 911 q 96 918 112 918 l 38 918 l 38 992 l 517 992 l 517 918 l 459 918 q 431 915 444 918 q 408 902 418 911 q 393 875 399 892 q 388 827 388 857 l 388 164 q 393 116 388 134 q 408 89 399 99 q 431 76 418 80 q 459 73 444 73 l 517 73 l 517 0 l 38 0 " }, "N": { "x_min": 38.453125, "x_max": 1070.859375, "ha": 1095, "o": "m 813 0 l 271 765 l 271 164 q 277 116 271 134 q 292 89 283 99 q 315 76 302 80 q 342 73 328 73 l 401 73 l 401 0 l 38 0 l 38 73 l 96 73 q 124 76 111 73 q 147 89 137 80 q 162 116 157 99 q 168 164 168 134 l 168 833 q 162 878 168 861 q 146 903 156 895 q 123 915 136 912 q 96 918 111 918 l 38 918 l 38 992 l 347 992 l 837 298 l 837 833 q 831 878 837 861 q 816 903 826 895 q 793 915 806 912 q 766 918 780 918 l 708 918 l 708 992 l 1070 992 l 1070 918 l 1012 918 q 985 915 998 918 q 962 903 972 912 q 947 876 952 893 q 942 828 942 858 l 942 0 l 813 0 " }, "G": { "x_min": 77, "x_max": 1029.375, "ha": 1068, "o": "m 587 -14 q 362 22 458 -14 q 203 126 266 59 q 108 288 139 193 q 77 497 77 382 q 110 703 77 609 q 208 864 143 796 q 370 968 273 931 q 594 1006 467 1006 q 746 993 681 1006 q 854 959 811 980 q 920 908 898 937 q 941 844 941 878 q 930 798 941 820 q 895 761 918 777 q 839 735 872 744 q 762 726 806 726 q 751 803 762 768 q 720 864 741 839 q 666 903 699 889 q 590 917 634 917 q 461 889 514 917 q 374 807 407 861 q 325 675 340 754 q 310 497 310 597 q 326 318 310 396 q 377 188 342 241 q 469 107 413 135 q 608 80 526 80 q 659 82 634 80 q 709 89 685 84 l 709 293 q 684 371 709 349 q 610 392 659 392 l 592 392 l 592 466 l 1029 466 l 1029 392 l 1011 392 q 974 387 990 392 q 948 370 958 382 q 933 338 938 358 q 929 288 929 318 l 929 60 q 764 4 847 23 q 587 -14 682 -14 " }, "T": { "x_min": 13, "x_max": 893, "ha": 907, "o": "m 563 164 q 568 116 563 134 q 584 89 574 99 q 606 76 593 80 q 634 73 619 73 l 692 73 l 692 0 l 213 0 l 213 73 l 271 73 q 300 76 287 73 q 322 89 313 80 q 337 116 332 99 q 343 164 343 134 l 343 907 l 231 907 q 179 900 200 907 q 144 881 158 893 q 125 850 131 868 q 116 809 118 832 l 106 723 l 13 723 l 20 992 l 886 992 l 893 723 l 800 723 l 789 809 q 780 850 787 832 q 761 881 774 868 q 726 900 747 893 q 674 907 705 907 l 563 907 l 563 164 " }, "A": { "x_min": 5.8125, "x_max": 1046.21875, "ha": 1046, "o": "m 303 326 l 262 206 q 251 167 257 189 q 245 127 245 144 q 251 103 245 113 q 265 87 256 93 q 285 77 274 80 q 308 73 296 73 l 367 73 l 367 0 l 5 0 l 5 73 l 22 73 q 56 77 41 73 q 84 93 71 82 q 109 124 98 104 q 134 175 121 143 l 435 992 l 625 992 l 916 173 q 937 125 926 144 q 961 94 948 105 q 989 78 975 83 q 1021 73 1004 73 l 1046 73 l 1046 0 l 587 0 l 587 73 l 642 73 q 663 76 652 73 q 682 86 673 80 q 696 103 690 92 q 701 127 701 113 q 697 160 701 144 q 689 187 693 175 l 640 326 l 303 326 m 539 639 q 524 689 532 662 q 508 742 516 715 q 493 796 500 769 q 481 847 486 823 q 467 801 475 826 q 449 749 458 776 q 431 696 440 723 q 414 645 422 670 l 332 411 l 612 411 l 539 639 " }, "R": { "x_min": 38.453125, "x_max": 987.734375, "ha": 982, "o": "m 38 73 l 96 73 q 123 76 111 73 q 146 87 136 79 q 162 112 156 96 q 168 156 168 129 l 168 833 q 162 878 168 861 q 146 903 156 895 q 123 915 136 912 q 96 918 111 918 l 38 918 l 38 992 l 486 992 q 775 926 683 992 q 867 735 867 860 q 850 637 867 680 q 807 562 834 594 q 746 508 780 530 q 677 472 712 486 l 843 187 q 877 136 860 157 q 910 100 894 114 q 945 80 927 86 q 982 73 962 73 l 987 73 l 987 0 l 942 0 q 833 4 879 0 q 751 23 786 9 q 691 61 716 37 q 644 124 666 86 l 479 431 l 387 431 l 387 156 q 392 112 387 129 q 408 87 398 96 q 431 76 418 79 q 458 73 444 73 l 517 73 l 517 0 l 38 0 l 38 73 m 387 512 l 465 512 q 545 524 513 512 q 597 563 577 537 q 625 626 616 588 q 633 716 633 665 q 624 805 633 768 q 594 865 614 842 q 541 899 573 888 q 462 909 508 909 l 387 909 l 387 512 " } }, "cssFontWeight": "bold", "ascender": 1290, "underlinePosition": -154, "cssFontStyle": "normal", "boundingBox": { "yMin": -387, "xMin": -289.125, "yMax": 1359, "xMax": 1773 }, "resolution": 1e3, "original_font_information": { "postscript_name": "DroidSerif-Bold", "version_string": "Version 1.00 build 107", "vendor_url": "http://www.ascendercorp.com/", "full_font_name": "Droid Serif Bold", "font_family_name": "Droid Serif", "copyright": "Digitized data copyright \xA9 2006, Google Corporation.", "description": "", "trademark": "Droid is a trademark of Google and may be registered in certain jurisdictions.", "designer": "", "designer_url": "http://www.ascendercorp.com/typedesigners.html", "unique_font_identifier": "Ascender - Droid Serif Bold", "license_url": "http://ascendercorp.com/eula10.html", "license_description": "This font software is the valuable property of Ascender Corporation and/or its suppliers and its use by you is covered under the terms of a license agreement. This font software is licensed to you by Ascender Corporation for your personal or business use on up to five personal computers. You may not use this font software on more than five personal computers unless you have obtained a license from Ascender to do so. Except as specifically permitted by the license, you may not copy this font software.\n\nIf you have any questions, please review the license agreement you received with this font software, and/or contact Ascender Corporation. \n\nContact Information:\nAscender Corporation\nWeb http://www.ascendercorp.com/", "manufacturer_name": "Ascender Corporation", "font_sub_family_name": "Bold" }, "descender": -328, "familyName": "Droid Serif", "lineHeight": 1617, "underlineThickness": 102 };
 
 // js/cake.js
 var R = 1;
@@ -1412,29 +1412,58 @@ function buildCandle(i, waxMap, glowTex, rnd) {
   g.add(light);
   return { group: g, flame, flameU, halo, light, ember, emberMat, glowU, life: 0, seed: rnd() * 100, topY };
 }
-function buildTopper(goldMat, creamMat) {
+function starShape(outer, inner) {
+  const sh = new THREE3.Shape();
+  for (let i = 0; i < 10; i++) {
+    const r = i % 2 ? inner : outer;
+    const a = Math.PI / 2 + i * Math.PI / 5;
+    if (i === 0) sh.moveTo(Math.cos(a) * r, Math.sin(a) * r);
+    else sh.lineTo(Math.cos(a) * r, Math.sin(a) * r);
+  }
+  sh.closePath();
+  return sh;
+}
+function buildTopper(faceMat, edgeMat) {
+  const mats = [faceMat, edgeMat];
   const font = new Font(topper_font_default);
-  const text = new TextGeometry("AMIT", { font, size: 0.24, height: 0.022, depth: 0.022, curveSegments: 10, bevelEnabled: true, bevelThickness: 4e-3, bevelSize: 32e-4, bevelSegments: 3 });
-  text.computeBoundingBox();
-  const bb = text.boundingBox;
-  text.translate(-(bb.min.x + bb.max.x) / 2, -bb.min.y + 0.012, -(bb.min.z + bb.max.z) / 2);
-  const width = bb.max.x - bb.min.x;
+  const opts = { font, size: 0.15, height: 0.012, depth: 0.012, curveSegments: 12, bevelEnabled: true, bevelThickness: 2e-3, bevelSize: 16e-4, bevelSegments: 2 };
   const g = new THREE3.Group();
-  const letters = new THREE3.Mesh(text, goldMat);
-  letters.castShadow = true;
-  g.add(letters);
-  const bar = new THREE3.Mesh(new THREE3.BoxGeometry(width + 0.03, 0.02, 0.022), goldMat);
-  bar.position.y = 6e-3;
-  bar.castShadow = true;
-  g.add(bar);
-  const stakeLen = 0.34;
+  const lineGap = 0.19;
+  let width = 0, topY = 0;
+  for (const [word, y] of [["STAR", 0], ["SHINING", lineGap]]) {
+    const text = new TextGeometry(word, opts);
+    text.computeBoundingBox();
+    const bb = text.boundingBox;
+    text.translate(-(bb.min.x + bb.max.x) / 2, -bb.min.y + 0.01 + y, -(bb.min.z + bb.max.z) / 2);
+    const w = bb.max.x - bb.min.x;
+    width = Math.max(width, w);
+    topY = Math.max(topY, bb.max.y - bb.min.y + 0.01 + y);
+    const letters = new THREE3.Mesh(text, mats);
+    letters.castShadow = true;
+    g.add(letters);
+    const rail = new THREE3.Mesh(new THREE3.BoxGeometry(w + 0.02, 0.013, 0.012), mats[1]);
+    rail.position.y = 0.012 + y;
+    rail.castShadow = true;
+    g.add(rail);
+  }
+  const star = new THREE3.Mesh(new THREE3.ExtrudeGeometry(starShape(0.07, 0.03), { depth: 0.012, bevelEnabled: true, bevelThickness: 2e-3, bevelSize: 16e-4, bevelSegments: 2 }), mats);
+  star.geometry.translate(0, 0, -6e-3);
+  star.position.y = topY + 0.075;
+  star.rotation.z = 0.12;
+  star.castShadow = true;
+  g.add(star);
+  const neck = new THREE3.Mesh(new THREE3.BoxGeometry(0.01, 0.06, 8e-3), mats[1]);
+  neck.position.set(0, topY + 0.012, -4e-3);
+  g.add(neck);
+  const stakeX = 0.15;
+  const stakeLen = 0.34 + lineGap;
   for (const sx of [-1, 1]) {
-    const stake = new THREE3.Mesh(new THREE3.BoxGeometry(0.014, stakeLen, 0.012), goldMat);
-    stake.position.set(sx * (width / 2 - 0.05), -stakeLen / 2 + 6e-3, 0);
+    const stake = new THREE3.Mesh(new THREE3.BoxGeometry(0.012, stakeLen, 0.01), mats[1]);
+    stake.position.set(sx * stakeX, -0.34 + stakeLen / 2 + 0.012, -0.011);
     stake.castShadow = true;
     g.add(stake);
   }
-  return { group: g, width, stakeX: width / 2 - 0.05 };
+  return { group: g, width, stakeX };
 }
 function createCake({ quality: quality2 }) {
   const rnd = mulberry32(2024);
@@ -1520,9 +1549,9 @@ function createCake({ quality: quality2 }) {
     return Math.cos(dl) > 0 ? Math.abs(r * Math.sin(dl)) : r;
   }));
   const inSlice = (t) => angleDelta(t, SLICE.a) > 0 && angleDelta(t, SLICE.b) < 0;
-  const candleSpots = [[-0.58, 0.12], [-0.22, 0.56], [0.3, 0.55], [0.55, -0.48]];
-  const topper = { z: -0.42, x: 0 };
-  const blocked = (x, z, rad) => candleSpots.some(([cx, cz]) => Math.hypot(x - cx, z - cz) < rad + 0.05) || Math.abs(z - topper.z) < rad + 0.03 && Math.abs(x - topper.x) < 0.3;
+  const candleSpots = [[-0.58, 0.12], [-0.22, 0.56], [0.3, 0.55], [0.62, -0.44]];
+  const topper = { z: -0.45, x: 0 };
+  const blocked = (x, z, rad) => candleSpots.some(([cx, cz]) => Math.hypot(x - cx, z - cz) < rad + 0.05) || Math.abs(z - topper.z) < rad + 0.03 && Math.abs(x - topper.x) < 0.46;
   const place = { body: { ros: [], berry: [], pearl: [] }, slice: { ros: [], berry: [], pearl: [] } };
   const M = new THREE3.Matrix4(), Q = new THREE3.Quaternion(), S = new THREE3.Vector3(), P = new THREE3.Vector3(), E = new THREE3.Euler();
   const pushInstance = (list, pos, scale, rotY, tilt = 0) => {
@@ -1584,11 +1613,12 @@ function createCake({ quality: quality2 }) {
     instanced(crownGeo, crownMat, place[key].berry, parent);
     instanced(pearlGeo, pearlMat, place[key].pearl, parent);
   }
-  const goldMat = new THREE3.MeshPhysicalMaterial({ color: 15122310, metalness: 1, roughness: 0.26, clearcoat: 0.5, clearcoatRoughness: 0.12, envMapIntensity: 1.6 });
-  const top = buildTopper(goldMat, creamMat);
+  const goldMat = new THREE3.MeshPhysicalMaterial({ color: 15254926, metalness: 1, roughness: 0.14, clearcoat: 0.6, clearcoatRoughness: 0.08, envMapIntensity: 1.7 });
+  const goldEdge = new THREE3.MeshStandardMaterial({ color: 12160341, metalness: 1, roughness: 0.38, envMapIntensity: 1.2 });
+  const top = buildTopper(goldMat, goldEdge);
   const topperY = topPoint(0, 0).y + 0.17;
   top.group.position.set(topper.x, topperY, topper.z);
-  top.group.rotation.set(-0.07, 0.035, 0.012);
+  top.group.rotation.set(-0.06, 0.03, 0.01);
   body.add(top.group);
   for (const sx of [-1, 1]) {
     const collar = new THREE3.Mesh(new THREE3.TorusGeometry(0.013, 55e-4, 8, 18), creamMat);
@@ -1908,7 +1938,7 @@ function depthCurve(p) {
   const s = p * p * p * (p * (p * 6 - 15) + 10);
   return clamp(s + 0.02 * Math.sin(p * Math.PI * 6) * 4 * p * (1 - p), 0, 1);
 }
-function createCutting({ gsap: gsap2, rig, cake, stage, sound, quality: quality2, reduced: reduced2 }) {
+function createCutting({ gsap: gsap2, rig, cake, stage, quality: quality2, reduced: reduced2 }) {
   const knife = createKnife();
   const crumbs = createCrumbs(quality2.mobile ? 40 : 80);
   stage.scene.add(knife.root, crumbs.mesh);
@@ -1959,7 +1989,6 @@ function createCutting({ gsap: gsap2, rig, cake, stage, sound, quality: quality2
         0.011
       );
     }
-    sound.crumb();
   }
   function emitCream(idx, n) {
     const th = CUTS[idx];
@@ -1978,13 +2007,11 @@ function createCutting({ gsap: gsap2, rig, cake, stage, sound, quality: quality2
   async function doCut(idx, push) {
     const theta = CUTS[idx];
     await tween(k, { yMid: TOP_Y + 4e-3, saw: 0.06, tilt: -0.1, duration: push > 2 ? 1 : 0.7, ease: "power2.inOut" });
-    sound.knifeContact();
     emitCream(idx, push > 2 ? 4 : 2);
     cut.uCutSlope.value[idx] = -Math.sin(k.tilt);
     await tween(k, { yMid: TOP_Y - 6e-3, duration: 0.22, ease: "power1.in" });
-    sound.cutStart();
     const st = { p: 0 };
-    let lastEmit = TOP_Y, lastSaw = k.saw;
+    let lastEmit = TOP_Y;
     const y0 = k.yMid;
     await tween(st, {
       p: 1,
@@ -2001,8 +2028,6 @@ function createCutting({ gsap: gsap2, rig, cake, stage, sound, quality: quality2
         cut.uCutOpen.value[idx] = 75e-4 * smoothstep(0, 0.06, p);
         cut.uCutBulge.value[idx] = 7e-3 * smoothstep(0, 0.15, p);
         knife.smearMat.opacity = Math.max(knife.smearMat.opacity, smoothstep(0.05, 0.9, g) * 0.95);
-        sound.cutLevel(0.35 + Math.min(1, Math.abs(k.saw - lastSaw) * 60));
-        lastSaw = k.saw;
         const yRim = k.yMid - 0.5 * Math.sin(k.tilt);
         if (lastEmit - yRim > (push > 2 ? 0.075 : 0.11) && yRim > 0.05) {
           lastEmit = yRim;
@@ -2010,7 +2035,6 @@ function createCutting({ gsap: gsap2, rig, cake, stage, sound, quality: quality2
         }
       }
     });
-    sound.cutStop();
     await tween(k, { yMid: BOTTOM_Y + 3e-3, duration: 0.14, ease: "sine.out" });
     tweenUniform(cut.uCutOpen, idx, 22e-4, { duration: 0.9 * speed, delay: 0.25 * speed, ease: "power2.out" });
     tweenUniform(cut.uCutBulge, idx, 3e-3, { duration: 1, delay: 0.3 });
@@ -2068,7 +2092,6 @@ function createCutting({ gsap: gsap2, rig, cake, stage, sound, quality: quality2
       stage.bokeh.enabled = true;
       gsap2.to(stage.bokeh.uniforms.aperture, { value: 0.012, duration: 0.6 });
     }
-    sound.knifeIn();
     await tween(k, { t: 1, duration: 1.3, ease: "power3.out" });
     await wait2(0.45);
     focusTarget = "knife";
@@ -2138,7 +2161,6 @@ function createCutting({ gsap: gsap2, rig, cake, stage, sound, quality: quality2
       tweenUniform(cut.uCutBulge, i, 15e-4, { duration: 0.8 });
     }
     cake.faceExpose.forEach((e) => gsap2.to(e, { value: 1, duration: 1.4 * speed, delay: 0.25 * speed, ease: "power1.inOut" }));
-    sound.slide();
     await tween(st, { out: 0.06, tip: 0.03, duration: 0.5, ease: "power2.out", onUpdate: apply });
     for (let i = 0; i < 4; i++) {
       const c = Math.cos(SLICE.mid + (rnd() - 0.5) * 0.6), sn = Math.sin(SLICE.mid + (rnd() - 0.5) * 0.6);
@@ -2676,7 +2698,7 @@ var Sound = class {
     comp.ratio.value = 3;
     this.master.connect(comp).connect(ctx.destination);
     this.verb = ctx.createConvolver();
-    this.verb.buffer = this.impulse(2.8, 2.6);
+    this.verb.buffer = this.impulse(1.6, 2.6);
     this.verbIn = ctx.createGain();
     this.verbIn.gain.value = 0.5;
     this.verbIn.connect(this.verb).connect(this.master);
@@ -2738,102 +2760,7 @@ var Sound = class {
     g.linearRampToValueAtTime(peak, t + a);
     g.exponentialRampToValueAtTime(1e-4, t + a + d);
   }
-  // ---- the cues --------------------------------------------------------------------------
-  ambient() {
-    if (!this.ctx || this.amb) return;
-    const ctx = this.ctx, t = ctx.currentTime;
-    const bus = ctx.createGain();
-    bus.gain.setValueAtTime(1e-4, t);
-    bus.gain.linearRampToValueAtTime(0.16, t + 4);
-    const lp = ctx.createBiquadFilter();
-    lp.type = "lowpass";
-    lp.frequency.value = 600;
-    bus.connect(lp);
-    this.out(lp, 0.5);
-    const oscs = [];
-    for (const [f, type, g] of [[55, "sine", 0.5], [82.41, "triangle", 0.18], [110.3, "sine", 0.16], [164.8, "sine", 0.06]]) {
-      const o = ctx.createOscillator();
-      o.type = type;
-      o.frequency.value = f;
-      const og = ctx.createGain();
-      og.gain.value = g;
-      const lfo = ctx.createOscillator();
-      lfo.frequency.value = 0.05 + Math.random() * 0.08;
-      const lg = ctx.createGain();
-      lg.gain.value = g * 0.4;
-      lfo.connect(lg).connect(og.gain);
-      o.connect(og).connect(bus);
-      o.start(t);
-      lfo.start(t);
-      oscs.push(o, lfo);
-    }
-    const air = this.noise(false, true);
-    const bp = ctx.createBiquadFilter();
-    bp.type = "bandpass";
-    bp.frequency.value = 520;
-    bp.Q.value = 0.6;
-    const ag = ctx.createGain();
-    ag.gain.value = 0.05;
-    air.connect(bp).connect(ag).connect(bus);
-    air.start(t);
-    oscs.push(air);
-    this.amb = { bus, oscs };
-  }
-  ambientLevel(v, time = 2) {
-    if (!this.amb) return;
-    this.amb.bus.gain.setTargetAtTime(Math.max(1e-4, 0.16 * v), this.ctx.currentTime, time / 3);
-  }
-  reveal() {
-    if (!this.ctx) return;
-    const ctx = this.ctx, t = ctx.currentTime;
-    const n = this.noise();
-    const bp = ctx.createBiquadFilter();
-    bp.type = "bandpass";
-    bp.Q.value = 1.2;
-    bp.frequency.setValueAtTime(180, t);
-    bp.frequency.exponentialRampToValueAtTime(2400, t + 2.6);
-    const g = ctx.createGain();
-    this.env(g, t, 1.8, 0.07, 1.6);
-    n.connect(bp).connect(g);
-    this.out(g, 0.8);
-    n.start(t);
-    n.stop(t + 4);
-    [261.6, 329.6, 392, 493.9, 587.3].forEach((f, i) => {
-      const o = ctx.createOscillator();
-      o.type = "sine";
-      o.frequency.value = f;
-      const og = ctx.createGain();
-      this.env(og, t + 0.4 + i * 0.12, 1.6, 0.028, 3.4);
-      o.connect(og);
-      this.out(og, 0.9);
-      o.start(t);
-      o.stop(t + 7);
-    });
-  }
-  ignite() {
-    if (!this.ctx) return;
-    const ctx = this.ctx, t = ctx.currentTime;
-    const n = this.noise();
-    const hp = ctx.createBiquadFilter();
-    hp.type = "bandpass";
-    hp.frequency.setValueAtTime(900, t);
-    hp.frequency.exponentialRampToValueAtTime(2600, t + 0.25);
-    const g = ctx.createGain();
-    this.env(g, t, 0.02, 0.18, 0.35);
-    n.connect(hp).connect(g);
-    this.out(g, 0.25);
-    n.start(t);
-    n.stop(t + 0.6);
-    const o = ctx.createOscillator();
-    o.frequency.setValueAtTime(140, t);
-    o.frequency.exponentialRampToValueAtTime(60, t + 0.2);
-    const og = ctx.createGain();
-    this.env(og, t, 0.01, 0.12, 0.25);
-    o.connect(og);
-    this.out(og, 0.1);
-    o.start(t);
-    o.stop(t + 0.4);
-  }
+  // ---- the cues: only the candle fire and the fireworks ---------------------------------
   fire(on) {
     if (!this.ctx) return;
     const ctx = this.ctx;
@@ -2880,134 +2807,6 @@ var Sound = class {
       }, 2500);
     }
   }
-  knifeIn() {
-    if (!this.ctx) return;
-    const ctx = this.ctx, t = ctx.currentTime;
-    const n = this.noise();
-    const f = ctx.createBiquadFilter();
-    f.type = "bandpass";
-    f.Q.value = 4;
-    f.frequency.setValueAtTime(2500, t);
-    f.frequency.exponentialRampToValueAtTime(7e3, t + 0.5);
-    const g = ctx.createGain();
-    this.env(g, t, 0.25, 0.035, 0.4);
-    n.connect(f).connect(g);
-    this.out(g, 0.6);
-    n.start(t);
-    n.stop(t + 1);
-  }
-  knifeContact() {
-    if (!this.ctx) return;
-    const ctx = this.ctx, t = ctx.currentTime;
-    [[1840, 0.9], [2770, 0.7], [4130, 0.45], [5930, 0.3], [7310, 0.22]].forEach(([f, dcy], i) => {
-      const o = ctx.createOscillator();
-      o.type = "sine";
-      o.frequency.value = f * (1 + (Math.random() - 0.5) * 0.01);
-      const g2 = ctx.createGain();
-      this.env(g2, t, 2e-3, 0.03 / (i + 1), dcy);
-      o.connect(g2);
-      this.out(g2, 0.7);
-      o.start(t);
-      o.stop(t + dcy + 0.1);
-    });
-    const n = this.noise();
-    const hp = ctx.createBiquadFilter();
-    hp.type = "highpass";
-    hp.frequency.value = 3e3;
-    const g = ctx.createGain();
-    this.env(g, t, 1e-3, 0.08, 0.05);
-    n.connect(hp).connect(g);
-    this.out(g, 0.2);
-    n.start(t);
-    n.stop(t + 0.1);
-  }
-  cutStart() {
-    if (!this.ctx || this.cutBus) return;
-    const ctx = this.ctx;
-    const n = this.noise(true, true);
-    const lp = ctx.createBiquadFilter();
-    lp.type = "lowpass";
-    lp.frequency.value = 1100;
-    const bp = ctx.createBiquadFilter();
-    bp.type = "peaking";
-    bp.frequency.value = 2200;
-    bp.gain.value = 6;
-    const g = ctx.createGain();
-    g.gain.value = 1e-4;
-    n.connect(lp).connect(bp).connect(g);
-    this.out(g, 0.1);
-    n.start();
-    this.cutBus = { n, g };
-  }
-  cutLevel(v) {
-    if (!this.cutBus) return;
-    this.cutBus.g.gain.setTargetAtTime(Math.max(1e-4, v * 0.22), this.ctx.currentTime, 0.04);
-  }
-  cutStop() {
-    if (!this.cutBus) return;
-    const cb = this.cutBus;
-    this.cutBus = null;
-    cb.g.gain.setTargetAtTime(1e-4, this.ctx.currentTime, 0.08);
-    setTimeout(() => {
-      try {
-        cb.n.stop();
-      } catch (e) {
-      }
-    }, 600);
-  }
-  crumb() {
-    if (!this.ctx || this.muted) return;
-    const ctx = this.ctx, t = ctx.currentTime;
-    const n = this.noise();
-    const bp = ctx.createBiquadFilter();
-    bp.type = "bandpass";
-    bp.frequency.value = 2e3 + Math.random() * 3e3;
-    bp.Q.value = 3;
-    const g = ctx.createGain();
-    this.env(g, t, 1e-3, 0.025 + Math.random() * 0.02, 0.03);
-    n.connect(bp).connect(g);
-    this.out(g, 0.1);
-    n.start(t, Math.random());
-    n.stop(t + 0.06);
-  }
-  slide() {
-    if (!this.ctx) return;
-    const ctx = this.ctx, t = ctx.currentTime;
-    const n = this.noise(true);
-    const lp = ctx.createBiquadFilter();
-    lp.type = "lowpass";
-    lp.frequency.value = 700;
-    const g = ctx.createGain();
-    this.env(g, t, 0.3, 0.12, 1.1);
-    n.connect(lp).connect(g);
-    this.out(g, 0.2);
-    n.start(t);
-    n.stop(t + 1.6);
-  }
-  impact() {
-    if (!this.ctx) return;
-    const ctx = this.ctx, t = ctx.currentTime;
-    const o = ctx.createOscillator();
-    o.frequency.setValueAtTime(90, t);
-    o.frequency.exponentialRampToValueAtTime(38, t + 0.6);
-    const og = ctx.createGain();
-    this.env(og, t, 0.01, 0.45, 1.2);
-    o.connect(og);
-    this.out(og, 0.5);
-    o.start(t);
-    o.stop(t + 1.5);
-    [523.3, 659.3, 784, 987.8, 1174.7, 1568].forEach((f, i) => {
-      const s = ctx.createOscillator();
-      s.type = i % 2 ? "triangle" : "sine";
-      s.frequency.value = f;
-      const g = ctx.createGain();
-      this.env(g, t + 0.05 + i * 0.05, 0.4, 0.022, 4.5);
-      s.connect(g);
-      this.out(g, 1);
-      s.start(t);
-      s.stop(t + 6);
-    });
-  }
   firework(distance = 40) {
     if (!this.ctx || this.muted) return;
     const ctx = this.ctx;
@@ -3038,7 +2837,6 @@ var Sound = class {
   }
   stopAll() {
     this.fire(false);
-    this.cutStop();
   }
 };
 
@@ -3160,7 +2958,7 @@ async function main() {
   scene.add(fireworks.points);
   const confetti = createConfetti({ count: mobile ? 46 : 96 });
   scene.add(confetti.mesh);
-  const cutting = createCutting({ gsap, rig, cake, stage, sound, quality, reduced });
+  const cutting = createCutting({ gsap, rig, cake, stage, quality, reduced });
   setProgress(0.9);
   const L = { ...LIGHT.dark };
   const envMaterials = /* @__PURE__ */ new Map();
@@ -3301,15 +3099,12 @@ async function main() {
     if (btn.disabled) return;
     setBusy(btn, true);
     sound.init();
-    sound.ambient();
-    sound.ambientLevel(1);
     await revealOut(introEls);
     setBusy(btn, false);
     setScreen("cake");
     gsap.killTweensOf(rig.s);
     gsap.to(rig.s, { ...SHOTS.revealWide, duration: reduced ? 2 : 3.6, ease: "power2.inOut" });
     toLight("studio", 4.2, 0.6);
-    gsap.delayedCall(1, () => sound.reveal());
     await wait(3.6);
     gsap.to(rig.s, { ...SHOTS.reveal, duration: reduced ? 2.5 : 6, ease: "power1.out" });
     await wait(1.6);
@@ -3333,10 +3128,8 @@ async function main() {
     gsap.to(rig.s, { ...SHOTS.lit, duration: reduced ? 2 : 4.5, ease: "power2.inOut" });
     toLight("candle", 3.2, 0.4);
     sound.fire(true);
-    sound.ambientLevel(0.75);
     cake.candles.forEach((c, i) => {
       gsap.delayedCall((reduced ? 0.25 : 0.55) * i + 0.3, () => {
-        sound.ignite();
         gsap.fromTo(c, { life: 0 }, { life: 1, duration: 1.1, ease: "back.out(1.6)" });
       });
     });
@@ -3369,11 +3162,9 @@ async function main() {
     resetEl(finalEls);
     resetEl(finalEls[0].querySelectorAll(".w"));
     gsap.set([finalEls[1], finalEls[2]], { opacity: 0 });
-    sound.ambientLevel(0.55);
     gsap.to(rig.s, { ...SHOTS.final, duration: reduced ? 2.4 : 4.2, ease: "power2.inOut" });
     toLight("final", 3);
     await wait(1.1);
-    sound.impact();
     fireworks.start(mobile ? 0.6 : 1);
     await wait(0.8);
     revealIn(finalEls[0], { stagger: 0.16 });
@@ -3395,7 +3186,6 @@ async function main() {
     fireworks.clear();
     confetti.clear();
     sound.fire(false);
-    sound.ambientLevel(1);
     cake.reset();
     cutting.reset();
     flash = 0;
