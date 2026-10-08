@@ -434,28 +434,61 @@ function buildCandle(i, waxMap, glowTex, rnd) {
 // ---------------------------------------------------------------------------------------
 // Topper
 // ---------------------------------------------------------------------------------------
-function buildTopper(goldMat, creamMat) {
+function starShape(outer, inner) {
+  const sh = new THREE.Shape();
+  for (let i = 0; i < 10; i++) {
+    const r = i % 2 ? inner : outer;
+    const a = Math.PI / 2 + (i * Math.PI) / 5;
+    if (i === 0) sh.moveTo(Math.cos(a) * r, Math.sin(a) * r); else sh.lineTo(Math.cos(a) * r, Math.sin(a) * r);
+  }
+  sh.closePath();
+  return sh;
+}
+
+function buildTopper(faceMat, edgeMat) {
+  // A cut mirror-acrylic topper: "SHINING" over "STAR" with a star above, each line sitting
+  // on a thin rail, the rails joined by two stakes behind that go into the cake.
+  // Extruded text has two material groups: 0 = the mirror faces, 1 = the cut edges.
+  const mats = [faceMat, edgeMat];
   const font = new Font(topperFont);
-  const text = new TextGeometry('AMIT', { font, size: 0.24, height: 0.022, depth: 0.022, curveSegments: 10, bevelEnabled: true, bevelThickness: 0.004, bevelSize: 0.0032, bevelSegments: 3 });
-  text.computeBoundingBox();
-  const bb = text.boundingBox;
-  text.translate(-(bb.min.x + bb.max.x) / 2, -bb.min.y + 0.012, -(bb.min.z + bb.max.z) / 2);
-  const width = bb.max.x - bb.min.x;
+  const opts = { font, size: 0.15, height: 0.012, depth: 0.012, curveSegments: 12, bevelEnabled: true, bevelThickness: 0.002, bevelSize: 0.0016, bevelSegments: 2 };
   const g = new THREE.Group();
-  const letters = new THREE.Mesh(text, goldMat);
-  letters.castShadow = true;
-  g.add(letters);
-  const bar = new THREE.Mesh(new THREE.BoxGeometry(width + 0.03, 0.02, 0.022), goldMat);
-  bar.position.y = 0.006; bar.castShadow = true;
-  g.add(bar);
-  const stakeLen = 0.34;
+  const lineGap = 0.19;
+  let width = 0, topY = 0;
+  for (const [word, y] of [['STAR', 0], ['SHINING', lineGap]]) {
+    const text = new TextGeometry(word, opts);
+    text.computeBoundingBox();
+    const bb = text.boundingBox;
+    text.translate(-(bb.min.x + bb.max.x) / 2, -bb.min.y + 0.01 + y, -(bb.min.z + bb.max.z) / 2);
+    const w = bb.max.x - bb.min.x;
+    width = Math.max(width, w);
+    topY = Math.max(topY, bb.max.y - bb.min.y + 0.01 + y);
+    const letters = new THREE.Mesh(text, mats);
+    letters.castShadow = true;
+    g.add(letters);
+    // the rail runs through the feet of the letters so the line is one connected piece
+    const rail = new THREE.Mesh(new THREE.BoxGeometry(w + 0.02, 0.013, 0.012), mats[1]);
+    rail.position.y = 0.012 + y; rail.castShadow = true;
+    g.add(rail);
+  }
+  const star = new THREE.Mesh(new THREE.ExtrudeGeometry(starShape(0.07, 0.03), { depth: 0.012, bevelEnabled: true, bevelThickness: 0.002, bevelSize: 0.0016, bevelSegments: 2 }), mats);
+  star.geometry.translate(0, 0, -0.006);
+  star.position.y = topY + 0.075;
+  star.rotation.z = 0.12;
+  star.castShadow = true;
+  g.add(star);
+  const neck = new THREE.Mesh(new THREE.BoxGeometry(0.01, 0.06, 0.008), mats[1]);
+  neck.position.set(0, topY + 0.012, -0.004);
+  g.add(neck);
+  const stakeX = 0.15;
+  const stakeLen = 0.34 + lineGap;
   for (const sx of [-1, 1]) {
-    const stake = new THREE.Mesh(new THREE.BoxGeometry(0.014, stakeLen, 0.012), goldMat);
-    stake.position.set(sx * (width / 2 - 0.05), -stakeLen / 2 + 0.006, 0);
+    const stake = new THREE.Mesh(new THREE.BoxGeometry(0.012, stakeLen, 0.01), mats[1]);
+    stake.position.set(sx * stakeX, -0.34 + stakeLen / 2 + 0.012, -0.011);
     stake.castShadow = true;
     g.add(stake);
   }
-  return { group: g, width, stakeX: width / 2 - 0.05 };
+  return { group: g, width, stakeX };
 }
 
 // ---------------------------------------------------------------------------------------
@@ -546,11 +579,11 @@ export function createCake({ quality }) {
   }));
   const inSlice = (t) => angleDelta(t, SLICE.a) > 0 && angleDelta(t, SLICE.b) < 0;
 
-  const candleSpots = [[-0.58, 0.12], [-0.22, 0.56], [0.3, 0.55], [0.55, -0.48]];
-  const topper = { z: -0.42, x: 0 };
+  const candleSpots = [[-0.58, 0.12], [-0.22, 0.56], [0.3, 0.55], [0.62, -0.44]];
+  const topper = { z: -0.45, x: 0 };
   const blocked = (x, z, rad) =>
     candleSpots.some(([cx, cz]) => Math.hypot(x - cx, z - cz) < rad + 0.05) ||
-    (Math.abs(z - topper.z) < rad + 0.03 && Math.abs(x - topper.x) < 0.3);
+    (Math.abs(z - topper.z) < rad + 0.03 && Math.abs(x - topper.x) < 0.46);
 
   const place = { body: { ros: [], berry: [], pearl: [] }, slice: { ros: [], berry: [], pearl: [] } };
   const M = new THREE.Matrix4(), Q = new THREE.Quaternion(), S = new THREE.Vector3(), P = new THREE.Vector3(), E = new THREE.Euler();
@@ -615,11 +648,13 @@ export function createCake({ quality }) {
   }
 
   // ----- topper -----------------------------------------------------------------------
-  const goldMat = new THREE.MeshPhysicalMaterial({ color: 0xe6bf86, metalness: 1, roughness: 0.26, clearcoat: 0.5, clearcoatRoughness: 0.12, envMapIntensity: 1.6 });
-  const top = buildTopper(goldMat, creamMat);
+  // mirror-gold acrylic: polished faces, slightly duller and darker cut edges
+  const goldMat = new THREE.MeshPhysicalMaterial({ color: 0xe8c58e, metalness: 1, roughness: 0.14, clearcoat: 0.6, clearcoatRoughness: 0.08, envMapIntensity: 1.7 });
+  const goldEdge = new THREE.MeshStandardMaterial({ color: 0xb98d55, metalness: 1, roughness: 0.38, envMapIntensity: 1.2 });
+  const top = buildTopper(goldMat, goldEdge);
   const topperY = topPoint(0, 0).y + 0.17;
   top.group.position.set(topper.x, topperY, topper.z);
-  top.group.rotation.set(-0.07, 0.035, 0.012);
+  top.group.rotation.set(-0.06, 0.03, 0.01);
   body.add(top.group);
   for (const sx of [-1, 1]) {
     const collar = new THREE.Mesh(new THREE.TorusGeometry(0.013, 0.0055, 8, 18), creamMat);

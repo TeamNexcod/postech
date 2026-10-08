@@ -129,7 +129,7 @@ async function main() {
   const confetti = createConfetti({ count: mobile ? 46 : 96 });
   scene.add(confetti.mesh);
 
-  const cutting = createCutting({ gsap, rig, cake, stage, sound, quality, reduced });
+  const cutting = createCutting({ gsap, rig, cake, stage, quality, reduced });
   setProgress(0.9);
 
   // ----- light state application -----------------------------------------------------
@@ -278,8 +278,6 @@ async function main() {
     if (btn.disabled) return;
     setBusy(btn, true);
     sound.init();
-    sound.ambient();
-    sound.ambientLevel(1);
     await revealOut(introEls);
     setBusy(btn, false);
     setScreen('cake');
@@ -287,7 +285,6 @@ async function main() {
     gsap.killTweensOf(rig.s);
     gsap.to(rig.s, { ...SHOTS.revealWide, duration: reduced ? 2 : 3.6, ease: 'power2.inOut' });
     toLight('studio', 4.2, 0.6);
-    gsap.delayedCall(1.0, () => sound.reveal());
     await wait(3.6);
     gsap.to(rig.s, { ...SHOTS.reveal, duration: reduced ? 2.5 : 6, ease: 'power1.out' });
     await wait(1.6);
@@ -312,10 +309,8 @@ async function main() {
     gsap.to(rig.s, { ...SHOTS.lit, duration: reduced ? 2 : 4.5, ease: 'power2.inOut' });
     toLight('candle', 3.2, 0.4);
     sound.fire(true);
-    sound.ambientLevel(0.75);
     cake.candles.forEach((c, i) => {
       gsap.delayedCall((reduced ? 0.25 : 0.55) * i + 0.3, () => {
-        sound.ignite();
         gsap.fromTo(c, { life: 0 }, { life: 1, duration: 1.1, ease: 'back.out(1.6)' });
       });
     });
@@ -352,11 +347,9 @@ async function main() {
     resetEl(finalEls);
     resetEl(finalEls[0].querySelectorAll('.w'));
     gsap.set([finalEls[1], finalEls[2]], { opacity: 0 });
-    sound.ambientLevel(0.55);
     gsap.to(rig.s, { ...SHOTS.final, duration: reduced ? 2.4 : 4.2, ease: 'power2.inOut' });
     toLight('final', 3);
     await wait(1.1);
-    sound.impact();
     fireworks.start(mobile ? 0.6 : 1);
     await wait(0.8);
     revealIn(finalEls[0], { stagger: 0.16 });
@@ -379,7 +372,6 @@ async function main() {
     fireworks.clear();
     confetti.clear();
     sound.fire(false);
-    sound.ambientLevel(1);
     cake.reset();
     cutting.reset();
     flash = 0;
