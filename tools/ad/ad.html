@@ -1,0 +1,546 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Nexcod POS Diwali Ad</title>
+<style>
+@font-face{font-family:Pop;src:url(fonts/Poppins-Regular.ttf);font-weight:400}
+@font-face{font-family:Pop;src:url(fonts/Poppins-Medium.ttf);font-weight:500}
+@font-face{font-family:Pop;src:url(fonts/Poppins-SemiBold.ttf);font-weight:600}
+@font-face{font-family:Pop;src:url(fonts/Poppins-Bold.ttf);font-weight:700}
+@font-face{font-family:Pop;src:url(fonts/Poppins-ExtraBold.ttf);font-weight:800}
+@font-face{font-family:Pop;src:url(fonts/Poppins-Black.ttf);font-weight:900}
+@font-face{font-family:Yatra;src:url(fonts/YatraOne-Regular.ttf)}
+html,body{margin:0;background:#000;overflow:hidden}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;font-family:Pop,sans-serif;color:#fff;
+  background:radial-gradient(ellipse 70% 60% at 50% 42%,#3a1430 0%,#1c0c26 45%,#08060f 100%)}
+#glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(255,170,40,.35),rgba(255,120,0,0) 55%);opacity:0}
+canvas{position:absolute;left:0;top:0}
+#world{position:absolute;inset:0}
+.c{position:absolute;white-space:nowrap;will-change:transform,opacity}
+.gold{background:linear-gradient(180deg,#fff7cf 0%,#ffd75e 42%,#f0a417 68%,#ffd56a 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.yat{font-family:Yatra,Pop,sans-serif;font-weight:400}
+.shadowtxt{filter:drop-shadow(0 5px 0 #6b2200) drop-shadow(0 0 28px rgba(255,160,0,.55))}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+#vign{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 100%);pointer-events:none}
+
+/* scene A */
+.chip{padding:14px 46px 10px;border-radius:24px;font-size:80px;font-weight:700;box-shadow:0 18px 40px rgba(0,0,0,.45),inset 0 -6px 0 rgba(0,0,0,.18)}
+.strike{position:absolute;height:12px;border-radius:6px;background:#ff2d3d;box-shadow:0 0 18px rgba(255,40,60,.8);transform-origin:0 50%}
+.stamp{font-family:Yatra,Pop;font-size:150px;line-height:1.25;padding:6px 60px 0;border-radius:18px;background:linear-gradient(180deg,#e3172b,#a40d1c);color:#fff;
+  border:6px solid #ffd45a;box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 60px rgba(255,60,60,.5)}
+
+/* scene B */
+#ring{width:560px;height:560px;border-radius:50%;background:conic-gradient(from 0deg,rgba(255,40,50,0),rgba(255,40,50,.9),rgba(255,210,90,.9),rgba(255,40,50,0) 60%,rgba(255,210,90,.6),rgba(255,40,50,0));
+  -webkit-mask:radial-gradient(circle,transparent 61%,#000 62%,#000 66%,transparent 67%);mask:radial-gradient(circle,transparent 61%,#000 62%,#000 66%,transparent 67%)}
+#halo{width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(255,60,60,.45),rgba(255,140,0,.15) 45%,rgba(0,0,0,0) 70%)}
+.wm{font-weight:800;font-size:132px;letter-spacing:-2px;line-height:1}
+.posb{display:inline-block;background:#e3172b;color:#fff;font-size:70px;font-weight:800;padding:6px 22px 2px;border-radius:14px;vertical-align:middle;margin-left:20px;position:relative;top:-14px}
+.sub{font-size:34px;font-weight:600;letter-spacing:12px;color:#cbd5e1}
+
+/* monitor */
+#mon{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform,opacity}
+#bezel{position:absolute;left:-22px;top:-22px;width:1344px;height:745px;border-radius:26px;background:linear-gradient(180deg,#232836,#0c0f16);
+  box-shadow:0 0 0 2px #3a4152,0 60px 120px rgba(0,0,0,.65),0 0 120px rgba(255,140,40,.18)}
+#screen{position:absolute;left:0;top:0;width:1300px;height:701px;overflow:hidden;border-radius:6px;background:#fff}
+#screen img{display:block;width:1300px;height:701px}
+#neck{position:absolute;left:590px;top:723px;width:120px;height:70px;background:linear-gradient(90deg,#141821,#2b3140,#141821)}
+#base{position:absolute;left:470px;top:790px;width:360px;height:22px;border-radius:12px 12px 6px 6px;background:linear-gradient(180deg,#2f3646,#0f1218)}
+.hl{position:absolute;border:4px solid #ffc933;border-radius:7px;box-shadow:0 0 0 5px rgba(255,201,51,.25),0 0 28px rgba(255,190,40,.9);opacity:0}
+.tag{position:absolute;background:linear-gradient(180deg,#ffe08a,#ffb81f);color:#2a1600;font-weight:700;font-size:23px;padding:3px 14px 0;border-radius:9px;white-space:nowrap;
+  box-shadow:0 6px 14px rgba(0,0,0,.35);opacity:0;transform-origin:50% 100%}
+#glare{position:absolute;top:-200px;left:0;width:260px;height:1200px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0));transform:rotate(18deg);opacity:0}
+
+/* scene D */
+.feat{width:800px;height:140px;border-radius:24px;background:linear-gradient(90deg,rgba(255,255,255,.11),rgba(255,255,255,.04));border:1.5px solid rgba(255,255,255,.16);
+  box-shadow:0 20px 40px rgba(0,0,0,.35);display:flex;align-items:center;gap:30px;padding:0 30px;box-sizing:border-box}
+.ico{width:96px;height:96px;border-radius:24px;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:inset 0 -5px 0 rgba(0,0,0,.2)}
+.ico svg{width:56px;height:56px}
+.ft{font-size:46px;font-weight:700;line-height:1.15}
+.fs{font-size:24px;font-weight:500;color:#cbd5e1;margin-top:2px}
+.mchip{font-size:28px;font-weight:600;padding:12px 28px 9px;border-radius:999px;background:rgba(255,215,94,.12);border:2px solid rgba(255,215,94,.55);color:#ffe7a3}
+
+/* scene E */
+.big{font-size:230px;line-height:1.3}
+.ribbon{font-family:Yatra,Pop;font-size:120px;line-height:1.3;padding:0 70px;background:linear-gradient(180deg,#ff2a3a,#b0101f);border-radius:20px;
+  border:5px solid #ffd45a;box-shadow:0 25px 60px rgba(0,0,0,.5),0 0 80px rgba(255,40,60,.45)}
+.pill{font-size:30px;font-weight:700;letter-spacing:8px;color:#1b1200;background:linear-gradient(180deg,#ffe28f,#f2b028);padding:8px 26px 4px;border-radius:999px}
+
+/* price cards */
+.card{position:absolute;width:400px;border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#111827,#0b111d);border:2px solid #d6a640;
+  box-shadow:0 30px 70px rgba(0,0,0,.6);transform-origin:50% 50%;will-change:transform,opacity}
+.hd{height:112px;position:relative;padding:14px 24px 0;box-sizing:border-box;color:#1d1405;
+  background:linear-gradient(120deg,#9d6a1c 0%,#d9ab4b 22%,#f8dc8d 45%,#e7bf62 62%,#b88329 85%,#8a5a12 100%)}
+.hd .pl{font-size:15px;letter-spacing:5px;font-weight:600;opacity:.75}
+.hd .nm{font-size:48px;font-weight:500;line-height:1.05;margin-top:2px}
+.hd .nm.solo{margin-top:22px}
+.off{position:absolute;right:20px;top:42px;background:#0b0f17;color:#ffe7a3;font-weight:700;font-size:21px;padding:6px 12px 3px;border-radius:6px}
+.rib{position:absolute;right:-58px;top:26px;width:230px;text-align:center;transform:rotate(38deg);background:#1d4fd8;color:#fff;font-size:16px;font-weight:800;letter-spacing:1px;padding:5px 0 3px}
+.bd{padding:18px 24px 22px}
+.prow{display:flex;align-items:baseline;gap:16px;height:92px;position:relative}
+.np{font-size:86px;font-weight:600;color:#fbe09a;line-height:1;transform-origin:0 80%}
+.op{font-size:30px;color:#f04545;position:relative;font-weight:500}
+.op i{position:absolute;left:-4px;top:52%;height:4px;width:calc(100% + 8px);background:#ff3b3b;transform-origin:0 50%;border-radius:2px;box-shadow:0 0 10px rgba(255,60,60,.8)}
+.pm{display:flex;align-items:center;gap:14px;font-size:21px;color:#d1d5db;margin-top:8px}
+.save{border:2px solid #e9b949;color:#ffe7a3;padding:3px 12px 1px;border-radius:5px;font-size:20px;font-weight:500}
+.rows{margin-top:16px}
+.row{display:flex;align-items:center;gap:12px;font-size:22px;padding:10px 0 8px;border-bottom:1px solid rgba(255,255,255,.12);color:#e5e7eb}
+.row b{font-weight:600;color:#fff;margin-left:auto;min-width:150px}
+.ck{width:24px;height:24px;flex:none}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;margin-top:16px;font-size:18px;color:#e5e7eb}
+.fg span{display:flex;align-items:center;gap:8px}
+.fg .ck{width:18px;height:18px}
+.dur{margin-top:20px;text-align:center;font-size:34px;font-weight:700;color:#1b1200;background:linear-gradient(180deg,#ffe28f,#f2b028);border-radius:12px;padding:8px 0 4px}
+.ft-li{display:flex;align-items:center;gap:12px;font-size:22px;padding:7px 0;color:#e5e7eb}
+.ft-li .ck{width:26px;height:26px}
+.btn{margin-top:18px;border:2px solid #e9b949;color:#ffd875;text-align:center;font-size:26px;font-weight:600;padding:14px 0 10px;border-radius:4px}
+#burst{width:640px;height:640px;display:block}
+.bt1{font-size:190px;font-weight:900;line-height:1;color:#fff;text-shadow:0 8px 0 #7a0d16}
+.bt2{font-size:66px;font-weight:800;color:#ffe28f;line-height:1.2}
+
+/* CTA */
+.call{font-size:84px;font-weight:800}
+#phone{height:156px;border-radius:999px;background:linear-gradient(180deg,#ff2b3b,#b80f1e);border:5px solid #ffd45a;display:flex;align-items:center;padding:0 52px 0 18px;gap:30px;
+  box-shadow:0 26px 60px rgba(0,0,0,.5),0 0 70px rgba(255,40,60,.45)}
+#picon{width:116px;height:116px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex:none;position:relative}
+#picon svg{width:62px;height:62px}
+.pr{position:absolute;inset:0;border-radius:50%;border:5px solid #fff}
+#pnum{font-size:96px;font-weight:800;letter-spacing:1px;line-height:1;padding-top:10px}
+#pnum span{display:inline-block}
+#url{height:118px;border-radius:999px;background:#fff;color:#0f172a;display:flex;align-items:center;gap:24px;padding:0 50px 0 34px;box-shadow:0 22px 50px rgba(0,0,0,.45)}
+#url svg{width:50px;height:50px;flex:none}
+#utext{font-size:74px;font-weight:700;letter-spacing:-1px;padding-top:8px}
+#caret{display:inline-block;width:5px;height:66px;background:#e3172b;margin-left:4px;vertical-align:-6px}
+.cchip{font-size:32px;font-weight:600;padding:12px 30px 9px;border-radius:999px;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.22);display:flex;align-items:center;gap:12px}
+.cchip .ck{width:30px;height:30px}
+#wmk{display:flex;align-items:center;gap:14px;font-weight:800;font-size:34px}
+#wmk img{width:62px;height:62px}
+#wmk .p{color:#ff3445}
+</style></head>
+<body>
+<div id="stage">
+  <div id="glow"></div>
+  <canvas id="bg" width="1920" height="1080"></canvas>
+  <div id="world">
+
+    <!-- Scene A: hook -->
+    <div id="a1" class="c" style="left:960px;top:225px;font-size:76px;font-weight:600">मेडिकल स्टोर में</div>
+    <div id="a2" class="c chip" style="left:520px;top:395px;background:linear-gradient(180deg,#2f6bff,#1740c9)">बिलिंग</div>
+    <div id="a3" class="c chip" style="left:960px;top:395px;background:linear-gradient(180deg,#ff8a1f,#d1530a)">स्टॉक</div>
+    <div id="a4" class="c chip" style="left:1400px;top:395px;background:linear-gradient(180deg,#b04bff,#7417c9)">एक्सपायरी</div>
+    <div id="a5" class="c" style="left:960px;top:615px;font-size:150px;font-weight:800;text-shadow:0 0 40px rgba(255,60,60,.55)">का टेंशन?<div id="a5s" class="strike" style="left:-20px;top:46%;width:calc(100% + 40px)"></div></div>
+    <div id="a6" class="c stamp" style="left:960px;top:850px">अब नहीं!</div>
+
+    <!-- Scene B: logo -->
+    <div id="halo" class="c" style="left:960px;top:500px"></div>
+    <div id="ring" class="c" style="left:960px;top:500px"></div>
+    <img id="blogo" class="c" src="logo.png" style="left:960px;top:500px;width:440px;height:440px">
+    <div id="bwm" class="c wm" style="left:1320px;top:420px">Nexcod<span class="posb">POS</span></div>
+    <div id="bsub" class="c sub" style="left:1320px;top:525px">PHARMACY SOFTWARE</div>
+    <div id="bline" class="c" style="left:1320px;top:585px;width:640px;height:5px;border-radius:3px;background:linear-gradient(90deg,rgba(255,200,80,0),#ffc94a,rgba(255,200,80,0))"></div>
+    <div id="bh1" class="c" style="left:1320px;top:660px;font-size:52px;font-weight:600;color:#e5e7eb">मेडिकल स्टोर का</div>
+    <div id="bh2" class="c gold" style="left:1320px;top:750px;font-size:72px;font-weight:800">स्मार्ट बिलिंग सॉफ्टवेयर</div>
+
+    <!-- Monitor (scenes C, D) -->
+    <div id="mon">
+      <div id="bezel"></div>
+      <div id="neck"></div><div id="base"></div>
+      <div id="screen"><img src="dash.png"><div id="glare"></div></div>
+    </div>
+    <div id="chd" class="c" style="left:960px;top:118px;font-size:70px;font-weight:700">सब कुछ, <span class="gold">एक ही डैशबोर्ड</span> पर</div>
+
+    <!-- Scene D: features -->
+    <div id="f1" class="c feat" style="left:1450px;top:250px">
+      <div class="ico" style="background:linear-gradient(180deg,#2f6bff,#1740c9)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2h14v20l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></div>
+      <div><div class="ft">GST बिलिंग</div><div class="fs">GSTR-1, 3B &amp; HSN reports</div></div></div>
+    <div id="f2" class="c feat" style="left:1450px;top:415px">
+      <div class="ico" style="background:linear-gradient(180deg,#ff8a1f,#d1530a)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 14l2.5 2.5L16 12"/></svg></div>
+      <div><div class="ft">बैच और एक्सपायरी ट्रैकिंग</div><div class="fs">Batch tracking &bull; Expiry alerts</div></div></div>
+    <div id="f3" class="c feat" style="left:1450px;top:580px">
+      <div class="ico" style="background:linear-gradient(180deg,#ff3b4f,#b80f1e)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div>
+      <div><div class="ft">लो स्टॉक अलर्ट</div><div class="fs">Low-stock &amp; out-of-stock alerts</div></div></div>
+    <div id="f4" class="c feat" style="left:1450px;top:745px">
+      <div class="ico" style="background:linear-gradient(180deg,#22c55e,#128c3e)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/><path d="M8 10h8M8 13.5h5"/></svg></div>
+      <div><div class="ft">हर बिल सीधे WhatsApp पर</div><div class="fs">Bills, dues &amp; reminders in one tap</div></div></div>
+    <div id="mrow" class="c" style="left:960px;top:975px;display:flex;gap:22px;transform:translate(-50%,-50%)">
+      <div id="m1" class="mchip">AI बिल-स्कैन परचेज</div><div id="m2" class="mchip">Android ऐप</div><div id="m3" class="mchip">स्टाफ लॉगिन</div>
+      <div id="m4" class="mchip">Unlimited बिल</div><div id="m5" class="mchip">Barcode स्कैनिंग</div></div>
+    <div id="mrowfix"></div>
+
+    <!-- Scene E: Diwali dhamaka -->
+    <div id="e0" class="c" style="left:960px;top:520px;font-size:90px;font-weight:700">और अब…</div>
+    <div id="eT" class="c" style="left:960px;top:470px">
+      <span id="e1" class="yat big gold shadowtxt" style="display:inline-block;margin-right:70px">दिवाली</span><span id="e2" class="yat big gold shadowtxt" style="display:inline-block">धमाका</span></div>
+    <div id="e3" class="c ribbon" style="left:960px;top:735px">ऑफर!</div>
+    <div id="e4" class="c pill" style="left:960px;top:885px">LAUNCH PRICING</div>
+
+    <!-- Scene F: pricing -->
+    <div id="cards"></div>
+    <div id="burstw" class="c" style="left:960px;top:560px;z-index:10;width:640px;height:640px">
+      <svg id="burst" viewBox="-100 -100 200 200"><defs><radialGradient id="bg1"><stop offset="0" stop-color="#fff2b0"/><stop offset=".6" stop-color="#ffc533"/><stop offset="1" stop-color="#e08a00"/></radialGradient></defs>
+        <polygon id="bpoly" fill="url(#bg1)" stroke="#fff3c4" stroke-width="1.2"/><circle r="66" fill="#d3122a" stroke="#ffe38a" stroke-width="3"/></svg>
+      <div class="c" style="left:320px;top:292px;transform:translate(-50%,-50%);text-align:center"><div class="bt1">74%</div></div>
+      <div class="c bt2" style="left:320px;top:412px;transform:translate(-50%,-50%)">तक की छूट</div>
+    </div>
+
+    <!-- Scene H: CTA -->
+    <div id="hhalo" class="c" style="left:430px;top:430px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(255,60,60,.45),rgba(255,140,0,.12) 45%,rgba(0,0,0,0) 70%)"></div>
+    <div id="hring" class="c" style="left:430px;top:430px;width:500px;height:500px;border-radius:50%;background:conic-gradient(from 0deg,rgba(255,40,50,0),rgba(255,40,50,.9),rgba(255,210,90,.9),rgba(255,40,50,0) 60%,rgba(255,210,90,.6),rgba(255,40,50,0));-webkit-mask:radial-gradient(circle,transparent 61%,#000 62%,#000 66%,transparent 67%)"></div>
+    <img id="hlogo" class="c" src="logo.png" style="left:430px;top:430px;width:390px;height:390px">
+    <div id="hwm" class="c" style="left:430px;top:705px;font-size:76px;font-weight:800;letter-spacing:-1px">Nexcod <span style="color:#ff3445">POS</span></div>
+    <div id="hsub" class="c sub" style="left:430px;top:778px;font-size:24px;letter-spacing:9px">PHARMACY SOFTWARE</div>
+    <div id="hcall" class="c call gold" style="left:1330px;top:178px">अभी कॉल करें</div>
+    <div id="phone" class="c" style="left:1330px;top:320px"><div id="picon"><div class="pr" id="pr1"></div><div class="pr" id="pr2"></div>
+      <svg viewBox="0 0 24 24" fill="#e3172b"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></div>
+      <div id="pnum"></div></div>
+    <div id="hvisit" class="c" style="left:1330px;top:492px;font-size:50px;font-weight:600;color:#e5e7eb">या विज़िट करें</div>
+    <div id="url" class="c" style="left:1330px;top:620px"><svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg><div id="utext"></div></div>
+    <div id="hc1" class="c cchip" style="left:1025px;top:770px"></div>
+    <div id="hc2" class="c cchip" style="left:1430px;top:770px"></div>
+    <div id="htag" class="c yat gold shadowtxt" style="left:960px;top:940px;font-size:96px;line-height:1.3">इस दिवाली, बिलिंग हो स्मार्ट!</div>
+
+    <!-- watermark -->
+    <div id="wmk" class="c" style="left:200px;top:62px"><img src="logo.png"><span>Nexcod <span class="p">POS</span></span></div>
+    <div id="wurl" class="c" style="left:1590px;top:1045px;font-size:26px;font-weight:600;color:#ffe7a3;opacity:.9">nexcodpos.in &nbsp;|&nbsp; +91 73198 33790</div>
+  </div>
+  <canvas id="fx" width="1920" height="1080"></canvas>
+  <div id="vign"></div>
+  <div id="flash"></div>
+</div>
+
+<script>
+// ---------- timeline (seconds). VO line n starts at V[n]; word offsets come from the TTS word boundaries.
+const V = {1:0.6, 2:5.55, 3:10.2, 4:15.45, 5:21.65, 6:23.95, 7:31.85, 8:35.75, 9:44.2};
+const END = 49.5;
+const w = (n, off) => V[n] + off;
+
+const $ = id => document.getElementById(id);
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const lerp = (a, b, p) => a + (b - a) * p;
+const P = (t, a, d) => clamp((t - a) / d);
+const eOut = x => 1 - Math.pow(1 - x, 3);
+const eIn = x => x * x * x;
+const eIO = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const eBack = x => { const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+const eEl = x => x === 0 ? 0 : x === 1 ? 1 : Math.pow(2, -9 * x) * Math.sin((x * 10 - .75) * (2 * Math.PI / 3)) + 1;
+function rng(seed) { let s = seed >>> 0; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+
+function T(el, o = {}) {
+  const { x = 0, y = 0, s = 1, r = 0, op = 1, rx = 0, ry = 0, blur = 0, c = true } = o;
+  const sx = o.sx ?? s, sy = o.sy ?? s;
+  el.style.transform = (c ? 'translate(-50%,-50%) ' : '') + `translate(${x}px,${y}px) ` +
+    (rx || ry ? `perspective(1800px) rotateX(${rx}deg) rotateY(${ry}deg) ` : '') + `scale(${sx},${sy}) rotate(${r}deg)`;
+  el.style.opacity = op;
+  el.style.visibility = op <= 0.002 ? 'hidden' : 'visible';
+  el.style.filter = blur > 0.05 ? `blur(${blur}px)` : '';
+}
+// pop-in: returns {op, s, y} for an element appearing at t0
+function pop(t, t0, d = .45, from = .5) { const p = P(t, t0, d); return { op: clamp(p * 2.5), s: lerp(from, 1, eBack(p)) }; }
+// visibility window: fade in at a over di, fade out at b over do
+function win(t, a, di, b, dout) { return Math.min(eOut(P(t, a, di)), 1 - eIn(P(t, b, dout))); }
+
+// ---------- static build
+const k = 1300 / 1354;
+const scr = $('screen');
+function hl(id, x, y, ww, h) { const d = document.createElement('div'); d.className = 'hl'; d.id = id;
+  Object.assign(d.style, { left: (x * k - 4) + 'px', top: (y * k - 4) + 'px', width: (ww * k) + 'px', height: (h * k) + 'px' }); scr.appendChild(d); return d; }
+function tag(id, text, x, y) { const d = document.createElement('div'); d.className = 'tag'; d.id = id; d.textContent = text;
+  Object.assign(d.style, { left: (x * k) + 'px', top: (y * k) + 'px' }); scr.appendChild(d); return d; }
+hl('hSale', 213, 499, 159, 52); hl('hProf', 373, 499, 159, 52); hl('hNet', 213, 552, 159, 55);
+hl('hDue', 213, 608, 159, 57); hl('hColl', 1014, 552, 159, 55);
+hl('hExp', 694, 608, 319, 57);
+hl('hGst', 998, 384, 165, 31); hl('hBatch', 1170, 272, 165, 31); hl('hLow', 998, 272, 165, 31);
+hl('hWa', 1170, 159, 165, 31); hl('hBan', 562, 85, 428, 405);
+tag('tSale', 'आज की सेल', 292, 458); tag('tProf', 'प्रॉफिट', 452, 458);
+tag('tDue', 'बकाया', 292, 672); tag('tColl', 'बकाया', 1093, 516);
+tag('tExp', 'एक्सपायरी अलर्ट', 853, 672);
+document.querySelectorAll('.tag').forEach(t => { t.dataset.x = t.style.left; t.dataset.y = t.style.top; });
+
+const CK = '<svg class="ck" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#22c55e"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const CK2 = '<svg class="ck" viewBox="0 0 24 24"><path d="M12 1l2.6 2 3.3-.3 1 3.2 2.9 1.6-.8 3.2 1.4 3-2.6 2.1-.4 3.3-3.3.5L12 23l-2.1-2.6-3.3-.5-.4-3.3L3.6 14.5l1.4-3-.8-3.2L7.1 6.7l1-3.2 3.3.3z" fill="#22c55e"/><path d="M7.5 12.3l3 3L16.6 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const PLANS = [
+  { id: 'cS', name: 'Silver', np: '₹399', op: '₹1,499', off: '73% OFF', pm: '₹133 a month', save: 'You save ₹1,100', val: '3 months', dur: '3 महीने के लिए' },
+  { id: 'cG', name: 'Gold', np: '₹699', op: '₹2,499', off: '72% OFF', pm: '₹117 a month', save: 'You save ₹1,800', val: '6 months', dur: '6 महीने के लिए', pop: true },
+  { id: 'cP', name: 'Platinum', np: '₹1,299', op: '₹4,999', off: '74% OFF', pm: '₹108 a month', save: 'You save ₹3,700', val: '1 year', dur: 'पूरे 1 साल के लिए' },
+];
+let html = `<div class="card" id="cF"><div class="hd"><div class="nm solo">Free Trial</div></div><div class="bd">
+  <div class="prow"><div class="np" style="opacity:1">₹0</div></div><div class="pm" style="margin-top:0">No card needed</div>
+  <div style="margin-top:16px">${['Every feature for 7 days', 'Bills sent from Nexcod WhatsApp', 'Unlimited bills and products', 'Android app and staff logins']
+    .map(s => `<div class="ft-li">${CK}${s}</div>`).join('')}</div>
+  <div class="btn">Start free trial</div><div class="dur">7 दिन बिल्कुल फ्री</div></div></div>`;
+for (const p of PLANS) html += `<div class="card" id="${p.id}"><div class="hd"><div class="pl">PLAN</div><div class="nm">${p.name}</div><div class="off">${p.off}</div>${p.pop ? '<div class="rib">MOST POPULAR</div>' : ''}</div>
+  <div class="bd"><div class="prow"><div class="np">${p.np}</div><div class="op">${p.op}<i></i></div></div>
+  <div class="pm">${p.pm}<span class="save">${p.save}</span></div>
+  <div class="rows">${[['Validity :', p.val], ['Bills :', 'Unlimited'], ['Products :', 'Unlimited'], ['Staff logins :', 'Included']].map(r => `<div class="row">${CK2}${r[0]}<b>${r[1]}</b></div>`).join('')}</div>
+  <div class="fg"><span>${CK2}GST billing</span><span>${CK2}GSTR-1 &amp; 3B</span><span>${CK2}Batch tracking</span><span>${CK2}Expiry alerts</span></div>
+  <div class="dur">${p.dur}</div></div></div>`;
+$('cards').innerHTML = html;
+
+// starburst polygon
+(() => { const n = 22, pts = []; for (let i = 0; i < n * 2; i++) { const a = Math.PI * i / n, r = i % 2 ? 80 : 98; pts.push((Math.cos(a) * r).toFixed(2) + ',' + (Math.sin(a) * r).toFixed(2)); } $('bpoly').setAttribute('points', pts.join(' ')); })();
+
+const PHONE = '+91 73198 33790';
+$('pnum').innerHTML = [...PHONE].map((ch, i) => `<span id="pd${i}">${ch === ' ' ? '&nbsp;' : ch}</span>`).join('');
+const URLT = 'nexcodpos.in';
+$('hc1').innerHTML = CK + '7 दिन फ्री ट्रायल';
+$('hc2').innerHTML = CK + 'कोई कार्ड नहीं चाहिए';
+
+// ---------- canvas helpers
+const bg = $('bg').getContext('2d'), fx = $('fx').getContext('2d');
+const BOK = (() => { const r = rng(7), a = []; for (let i = 0; i < 46; i++) a.push({ x: r() * 1920, y: r() * 1180, s: 8 + r() * 46, v: 12 + r() * 40, h: 28 + r() * 22, a: .05 + r() * .2, ph: r() * 6.28, dx: (r() - .5) * 20 }); return a; })();
+function bokeh(ctx, t, amt) {
+  ctx.save(); ctx.globalCompositeOperation = 'lighter';
+  for (const b of BOK) {
+    const y = ((b.y - b.v * t) % 1180 + 1180) % 1180 - 50, x = b.x + Math.sin(t * .5 + b.ph) * b.dx;
+    const al = b.a * amt * (.6 + .4 * Math.sin(t * 2 + b.ph));
+    const g = ctx.createRadialGradient(x, y, 0, x, y, b.s);
+    g.addColorStop(0, `hsla(${b.h},100%,65%,${al})`); g.addColorStop(1, `hsla(${b.h},100%,50%,0)`);
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, b.s, 0, 6.283); ctx.fill();
+  }
+  ctx.restore();
+}
+// fireworks: [t0, x, y, hue, n]
+const FW = [[0.25, 420, 250, 45, 80], [0.55, 1500, 230, 350, 80], [4.8, 1650, 300, 45, 70], [4.95, 280, 330, 140, 60],
+  [22.2, 380, 250, 45, 90], [22.65, 1540, 230, 330, 90], [23.2, 960, 160, 30, 90], [23.45, 260, 620, 190, 70], [23.6, 1660, 640, 50, 70],
+  [31.9, 330, 230, 45, 80], [32.2, 1600, 220, 0, 80],
+  [45.55, 330, 210, 45, 90], [46.25, 1620, 190, 330, 90], [46.9, 980, 120, 50, 90], [47.6, 620, 260, 190, 70], [48.3, 1350, 250, 30, 80]];
+const FWP = FW.map((f, j) => { const r = rng(100 + j), ps = []; for (let i = 0; i < f[4]; i++) ps.push({ a: 6.283 * i / f[4] + r() * .12, v: 260 + r() * 260, h: f[3] + (r() - .5) * 30, ph: r() * 9 }); return ps; });
+function fireworks(ctx, t) {
+  ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.lineCap = 'round';
+  FW.forEach((f, j) => {
+    const age = t - f[0]; if (age < -0.35 || age > 1.9) return;
+    if (age < 0) { // rocket
+      const p = 1 + age / .35, y = lerp(1080, f[2], eOut(p));
+      const gr = ctx.createLinearGradient(0, y + 110, 0, y); gr.addColorStop(0, `hsla(${f[3]},100%,70%,0)`); gr.addColorStop(1, `hsla(${f[3]},100%,85%,.95)`);
+      ctx.strokeStyle = gr; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(f[1], y + 110); ctx.lineTo(f[1], y); ctx.stroke();
+      ctx.fillStyle = `hsla(${f[3]},100%,90%,1)`; ctx.beginPath(); ctx.arc(f[1], y, 4, 0, 6.283); ctx.fill(); return;
+    }
+    if (age < .12) { const g = ctx.createRadialGradient(f[1], f[2], 0, f[1], f[2], 160); g.addColorStop(0, `hsla(${f[3]},100%,85%,${.8 * (1 - age / .12)})`); g.addColorStop(1, 'hsla(0,0%,0%,0)'); ctx.fillStyle = g; ctx.fillRect(f[1] - 160, f[2] - 160, 320, 320); }
+    const life = 1.9, kd = 2.0, g = 140;
+    const pos = (p, a) => { const d = (1 - Math.exp(-kd * a)) / kd; return [f[1] + Math.cos(p.a) * p.v * d, f[2] + Math.sin(p.a) * p.v * d + .5 * g * a * a]; };
+    for (const p of FWP[j]) {
+      const al = Math.pow(1 - age / life, 1.4) * (age > 1 ? .55 + .45 * Math.sin(age * 38 + p.ph) : 1);
+      const [x1, y1] = pos(p, age), [x0, y0] = pos(p, Math.max(0, age - .1));
+      ctx.strokeStyle = `hsla(${p.h},100%,${age < .3 ? 80 : 62}%,${al})`; ctx.lineWidth = 3.2;
+      ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
+    }
+  });
+  ctx.restore();
+}
+function diya(ctx, x, y, s, t, seed, al = 1) {
+  ctx.save(); ctx.globalAlpha = al; ctx.translate(x, y); ctx.scale(s, s);
+  const fl = 1 + .08 * Math.sin(t * 17 + seed) + .05 * Math.sin(t * 29 + seed * 2);
+  ctx.globalCompositeOperation = 'lighter';
+  let g = ctx.createRadialGradient(0, -40, 0, 0, -40, 120); g.addColorStop(0, `rgba(255,170,40,${.45 * fl})`); g.addColorStop(1, 'rgba(255,120,0,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, -40, 120, 0, 6.283); ctx.fill();
+  ctx.globalCompositeOperation = 'source-over';
+  g = ctx.createLinearGradient(0, -8, 0, 40); g.addColorStop(0, '#d9662a'); g.addColorStop(1, '#6b200c');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(-58, -6); ctx.bezierCurveTo(-50, 40, 50, 40, 58, -6); ctx.quadraticCurveTo(70, -14, 76, -20); ctx.lineTo(40, -6); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#f08a3c'; ctx.beginPath(); ctx.ellipse(0, -6, 58, 11, 0, 0, 6.283); ctx.fill();
+  ctx.fillStyle = '#3a1205'; ctx.beginPath(); ctx.ellipse(0, -6, 50, 7, 0, 0, 6.283); ctx.fill();
+  ctx.fillStyle = '#ffd25a'; for (let i = -2; i <= 2; i++) { ctx.beginPath(); ctx.arc(i * 18, 16 + Math.abs(i) * -3, 3.2, 0, 6.283); ctx.fill(); }
+  ctx.save(); ctx.translate(0, -10); ctx.scale(1, fl);
+  g = ctx.createRadialGradient(0, -18, 2, 0, -22, 34); g.addColorStop(0, '#fffbe6'); g.addColorStop(.35, '#ffe066'); g.addColorStop(.75, '#ff8a00'); g.addColorStop(1, 'rgba(255,60,0,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(0, 0); ctx.bezierCurveTo(-18, -8, -12, -34, 0, -62); ctx.bezierCurveTo(12, -34, 18, -8, 0, 0); ctx.fill();
+  ctx.restore(); ctx.restore();
+}
+// marigold garland (pre-rendered)
+const GAR = document.createElement('canvas'); GAR.width = 1920; GAR.height = 260;
+(() => {
+  const c = GAR.getContext('2d'), r = rng(11);
+  const ball = (x, y, rad, i) => {
+    const col = i % 3 === 2 ? ['#fff07a', '#f5b800'] : ['#ffb347', '#e86a00'];
+    const g = c.createRadialGradient(x - rad * .3, y - rad * .3, 1, x, y, rad); g.addColorStop(0, col[0]); g.addColorStop(1, col[1]);
+    c.fillStyle = g; c.beginPath(); c.arc(x, y, rad, 0, 6.283); c.fill();
+    c.strokeStyle = 'rgba(120,40,0,.35)'; c.lineWidth = 1.2; for (let q = 0; q < 6; q++) { const a = r() * 6.28; c.beginPath(); c.arc(x, y, rad * (.4 + r() * .5), a, a + 1.2); c.stroke(); }
+  };
+  const leaf = (x, y, a) => { c.save(); c.translate(x, y); c.rotate(a); c.fillStyle = '#2f8a2f'; c.beginPath(); c.ellipse(0, 12, 8, 18, 0, 0, 6.283); c.fill(); c.restore(); };
+  const sw = 5, W = 1920 / sw;
+  for (let s = 0; s < sw; s++) { const x0 = s * W, x1 = x0 + W; let i = 0;
+    for (let x = x0 + 8; x < x1 - 4; x += 21) { const u = (x - x0) / W; ball(x, 14 + 70 * Math.sin(Math.PI * u), 13, i++); } }
+  for (let s = 0; s <= sw; s++) { const x = s * W; leaf(x - 10, 6, .6); leaf(x + 10, 6, -.6);
+    for (let j = 0; j < 3; j++) ball(x, 24 + j * 25, 12.5, j); ball(x, 24 + 3 * 25 + 4, 9, 2); }
+})();
+function sparkle(ctx, x, y, s, al) {
+  ctx.save(); ctx.translate(x, y); ctx.scale(s, s); ctx.globalAlpha = al; ctx.globalCompositeOperation = 'lighter';
+  const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 22); g.addColorStop(0, 'rgba(255,250,220,1)'); g.addColorStop(1, 'rgba(255,200,60,0)');
+  ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, 22, 0, 6.283); ctx.fill();
+  ctx.fillStyle = '#fff6cf'; ctx.beginPath(); ctx.moveTo(0, -30); ctx.quadraticCurveTo(3, -3, 30, 0); ctx.quadraticCurveTo(3, 3, 0, 30); ctx.quadraticCurveTo(-3, 3, -30, 0); ctx.quadraticCurveTo(-3, -3, 0, -30); ctx.fill();
+  ctx.restore();
+}
+function sparkBurst(ctx, t, t0, x, y, n, seed, rad = 160) {
+  const age = t - t0; if (age < 0 || age > 1.1) return; const r = rng(seed);
+  for (let i = 0; i < n; i++) { const a = r() * 6.283, d = rad * (.4 + r() * .6) * eOut(clamp(age / .7)), sc = (.3 + r() * .5) * (1 - age / 1.1);
+    sparkle(ctx, x + Math.cos(a) * d, y + Math.sin(a) * d, sc, clamp(1 - age / 1.1) * (.7 + .3 * Math.sin(age * 30 + i))); }
+}
+
+// camera keyframes for the monitor: [t, fx, fy, S, cx, cy, ry]
+const OV = [677, 365, 1.0, 960, 600, 0];
+const CAM = [[10.0, ...OV], [w(3, .3), ...OV], [w(3, .85), 690, 590, 1.55, 960, 560, 0], [w(3, 2.9), 830, 605, 1.6, 960, 560, 0],
+  [w(3, 3.0), 830, 605, 1.6, 960, 560, 0], [w(3, 3.65), ...OV], [15.15, ...OV], [15.85, 677, 365, .68, 540, 560, 12], [21.3, 677, 365, .7, 540, 560, 9]];
+function cam(t) {
+  if (t <= CAM[0][0]) return CAM[0].slice(1);
+  for (let i = 0; i < CAM.length - 1; i++) { const a = CAM[i], b = CAM[i + 1];
+    if (t <= b[0]) { const p = eIO((t - a[0]) / (b[0] - a[0])); return a.slice(1).map((v, j) => lerp(v, b[j + 1], p)); } }
+  return CAM[CAM.length - 1].slice(1);
+}
+
+// card layouts
+const L3 = { cS: 500, cG: 960, cP: 1420 }, L4 = { cF: 306, cS: 742, cG: 1178, cP: 1614 };
+const CARD_TOP = 232;
+
+// ---------- render
+function render(t) {
+  const shake = [0.25, w(1, 4.15), 22.23, 22.68, w(7, 0)].reduce((acc, s) => acc + (t >= s ? Math.exp(-(t - s) * 9) * 14 : 0), 0);
+  const sr = rng(Math.floor(t * 60) + 3);
+  $('world').style.transform = shake > .2 ? `translate(${(sr() - .5) * shake}px,${(sr() - .5) * shake}px)` : '';
+
+  // background canvas
+  bg.clearRect(0, 0, 1920, 1080);
+  bokeh(bg, t, 1);
+  const garA = Math.max(win(t, 0, .6, 5.3, .4), win(t, 21.7, .4, 24.0, .4), win(t, 35.6, .6, 99, 1));
+  if (garA > 0) { bg.save(); bg.globalAlpha = garA; bg.drawImage(GAR, 0, lerp(-140, 0, garA)); bg.restore(); }
+  fireworks(bg, t);
+  const dA = Math.max(win(t, 0.1, .6, 5.3, .4), win(t, 21.7, .4, 23.9, .4));
+  if (dA > 0) for (let i = 0; i < 6; i++) diya(bg, 160 + i * 320, 1050, .95, t, i * 3.1, dA);
+  const dH = win(t, w(9, 1.2), .6, 99, 1);
+  if (dH > 0) { diya(bg, 250, 990, .9, t, 1, dH); diya(bg, 1670, 990, .9, t, 4, dH); }
+  $('glow').style.opacity = Math.max(.25 * win(t, 0, 1, 5.3, .4), .9 * win(t, 22.1, .3, 23.9, .4), .35 * win(t, 35.6, 1, 99, 1));
+
+  // ---- Scene A
+  const aOut = 1 - eIn(P(t, 5.25, .3)), aZ = 1 + .25 * eIn(P(t, 5.25, .3));
+  { const p = pop(t, w(1, 0), .5, .8); T($('a1'), { op: p.op * aOut, s: p.s * aZ, y: lerp(30, 0, eOut(P(t, w(1, 0), .5))) }); }
+  [['a2', 0.90, -120], ['a3', 1.36, 0], ['a4', 2.03, 120]].forEach(([id, o, dx], i) => {
+    const p = pop(t, w(1, o) - .05, .45, .3), sh = t > w(1, 2.81) ? Math.sin(t * 50 + i) * 3 * P(t, w(1, 2.81), .2) * (1 - P(t, w(1, 4.15), .1)) : 0;
+    const dim = t > w(1, 4.15) ? lerp(1, .45, P(t, w(1, 4.15), .2)) : 1;
+    T($(id), { op: p.op * aOut * dim, s: p.s * aZ, y: lerp(60, 0, eOut(P(t, w(1, o) - .05, .45))), r: sh + (i - 1) * 2, x: dx * (aZ - 1) * 4 });
+  });
+  { const p = pop(t, w(1, 2.65), .45, 1.6); const sh = Math.sin(t * 70) * 6 * P(t, w(1, 2.9), .1) * (1 - P(t, w(1, 4.1), .1));
+    T($('a5'), { op: p.op * aOut, s: p.s * aZ, x: sh });
+    $('a5s').style.transform = `scaleX(${eOut(P(t, w(1, 4.1), .25))}) rotate(-3deg)`; }
+  { const p = P(t, w(1, 4.13), .22); T($('a6'), { op: clamp(p * 3) * aOut, s: lerp(2.6, 1, eOut(p)) * aZ, r: -5 }); }
+
+  // ---- Scene B
+  const bA = win(t, 5.4, .2, 9.95, .35), bOut = 1 + .1 * eIn(P(t, 9.95, .35));
+  $('flash').style.opacity = Math.max(.85 * (1 - P(t, 5.4, .35)) * (t >= 5.4 ? 1 : 0), .9 * (1 - P(t, 22.2, .3)) * (t >= 22.2 ? 1 : 0), .7 * (1 - P(t, 0, .4)));
+  { const pin = P(t, 5.42, .7), pm = eIO(P(t, 6.15, .55));
+    const lx = lerp(0, -380, pm), ly = lerp(0, 40, pm), ls = lerp(.2, 1, eBack(pin)) * lerp(1, .82, pm) * bOut;
+    T($('blogo'), { op: bA * clamp(pin * 3), s: ls, x: lx, y: ly, r: lerp(-200, 0, eOut(pin)) });
+    T($('ring'), { op: bA * clamp(pin * 2), s: ls, x: lx, y: ly, r: t * 90 });
+    T($('halo'), { op: bA * (.7 + .3 * Math.sin(t * 4)), s: ls * 1.05, x: lx, y: ly }); }
+  { const p = eOut(P(t, w(2, .65), .55)); T($('bwm'), { op: bA * clamp(p * 2), x: lerp(160, 0, p), s: bOut }); }
+  { const p = eOut(P(t, w(2, 1.3), .5)); T($('bsub'), { op: bA * p, x: lerp(120, 0, p), s: bOut }); }
+  { const p = eOut(P(t, w(2, 1.8), .5)); T($('bline'), { op: bA * p, sx: p * bOut, sy: bOut }); }
+  { const p = pop(t, w(2, 2.05), .45, .7); T($('bh1'), { op: bA * p.op, s: p.s * bOut }); }
+  { const p = pop(t, w(2, 3.0), .5, .5); T($('bh2'), { op: bA * p.op, s: p.s * bOut }); }
+
+  // ---- Monitor (C, D)
+  { const [fxp, fyp, S, cx, cy, ry] = cam(t);
+    const pin = eOut(P(t, 10.0, .8)), out = P(t, 21.35, .35);
+    const Tx = cx - S * k * fxp, Ty = cy - S * k * fyp + lerp(500, 0, pin) + lerp(0, -80, eIn(out));
+    const rx = lerp(38, 0, pin);
+    const m = $('mon'), op = (t < 10 || t > 21.75) ? 0 : clamp(pin * 2) * (1 - eIn(out));
+    m.style.transform = `translate(${Tx}px,${Ty}px) scale(${S * lerp(1, .9, eIn(out))}) translate(650px,350px) perspective(2200px) rotateX(${rx}deg) rotateY(${ry}deg) translate(-650px,-350px)`;
+    m.style.opacity = op; m.style.visibility = op > 0 ? 'visible' : 'hidden'; }
+  const hon = (id, t0, t1) => { const a = win(t, t0, .25, t1, .25), pl = .5 + .5 * Math.sin((t - t0) * 9);
+    const el = $(id); el.style.opacity = a; el.style.transform = `scale(${lerp(1.35, 1, eOut(P(t, t0, .3)))})`; el.style.boxShadow = `0 0 0 ${4 + 4 * pl}px rgba(255,201,51,.3),0 0 ${20 + 18 * pl}px rgba(255,190,40,.95)`; };
+  const tagon = (id, t0, t1) => { const a = win(t, t0, .25, t1, .25), el = $(id);
+    el.style.opacity = a; el.style.transform = `translate(-50%,-100%) scale(${lerp(.4, 1, eBack(P(t, t0, .4)))})`; };
+  const cEnd = w(3, 3.0);
+  hon('hSale', w(3, .35), cEnd); tagon('tSale', w(3, .35), cEnd);
+  hon('hProf', w(3, .8), cEnd); tagon('tProf', w(3, .8), cEnd); hon('hNet', w(3, .9), cEnd);
+  hon('hDue', w(3, 1.35), cEnd); tagon('tDue', w(3, 1.35), cEnd); hon('hColl', w(3, 1.45), cEnd); tagon('tColl', w(3, 1.45), cEnd);
+  hon('hExp', w(3, 2.22), cEnd); tagon('tExp', w(3, 2.22), cEnd);
+  hon('hGst', w(4, 0), w(4, 5.8)); hon('hBatch', w(4, 1.1), w(4, 5.8)); hon('hLow', w(4, 2.95), w(4, 5.8));
+  hon('hWa', w(4, 4.3), w(4, 5.8)); hon('hBan', w(4, 4.3), w(4, 5.8));
+  { const p = P(t, w(3, 4.1), .8); $('glare').style.opacity = p > 0 && p < 1 ? .9 : 0; $('glare').style.left = lerp(-400, 1500, eIO(p)) + 'px'; }
+  { const p = pop(t, w(3, 3.05), .5, .6); T($('chd'), { op: p.op * (1 - eIn(P(t, 15.1, .3))), s: p.s, y: lerp(-40, 0, eOut(P(t, w(3, 3.05), .5))) }); }
+
+  // ---- Scene D
+  const dOut = P(t, 21.35, .35);
+  [['f1', 0], ['f2', 1.11], ['f3', 2.98], ['f4', 4.11]].forEach(([id, o]) => {
+    const t0 = w(4, o) - .1, p = eOut(P(t, t0, .5)), act = win(t, t0, .2, (o === 4.11 ? 99 : 0) + w(4, o) + 1.4, .4);
+    T($(id), { op: clamp(p * 2) * (1 - eIn(dOut)), x: lerp(260, 0, p) + lerp(0, 300, eIn(dOut)), s: lerp(.9, 1, eBack(P(t, t0, .5))) * (1 + .035 * act) });
+    $(id).style.borderColor = `rgba(255,${lerp(255, 205, act)},${lerp(255, 80, act)},${lerp(.16, .9, act)})`;
+  });
+  ['m1', 'm2', 'm3', 'm4', 'm5'].forEach((id, i) => { const p = pop(t, w(4, 4.6) + i * .12, .4, .4); T($(id), { c: false, op: p.op * (1 - eIn(dOut)), s: p.s, y: lerp(40, 0, eOut(P(t, w(4, 4.6) + i * .12, .4))) }); });
+
+  // ---- Scene E
+  { const p = pop(t, w(5, 0), .35, .7); T($('e0'), { op: p.op * (1 - P(t, w(5, .5), .1)), s: p.s }); }
+  { // title: big in E, shrinks to header in F
+    const p1 = P(t, w(5, .56), .3), p2 = P(t, w(5, 1.01), .3), sh = eIO(P(t, 23.75, .55));
+    T($('e1'), { op: clamp(p1 * 3), s: lerp(2.4, 1, eOut(p1)), c: false });
+    T($('e2'), { op: clamp(p2 * 3), s: lerp(2.4, 1, eOut(p2)), c: false });
+    const fade = 1 - eIn(P(t, 35.45, .35));
+    T($('eT'), { op: (t < w(5, .5) ? 0 : 1) * fade, s: lerp(1, .38, sh), y: lerp(0, -380, sh) + lerp(0, -60, eIn(P(t, 35.45, .35))) }); }
+  { const p = P(t, w(5, 1.55), .3); T($('e3'), { op: clamp(p * 3) * (1 - eIn(P(t, 23.75, .3))), s: lerp(2.2, 1, eOut(p)) * lerp(1, 1.4, eIn(P(t, 23.75, .3))), r: -3 }); }
+  { const p = pop(t, w(5, 1.8), .4, .5); T($('e4'), { op: p.op * (1 - eIn(P(t, 23.75, .3))), s: p.s }); }
+
+  // ---- Scene F: cards
+  const fOut = P(t, 35.45, .4), shift = eIO(P(t, w(7, 1.95), .6)), dimB = win(t, w(7, -.05), .25, w(7, 1.9), .4);
+  const starts = { cS: w(6, 0) - .05, cG: w(6, 2.0), cP: w(6, 5.06), cF: w(7, 2.0) };
+  const reveal = { cS: w(6, .74), cG: w(6, 2.75), cP: w(6, 6.06) };
+  const act = { cS: [starts.cS, starts.cG], cG: [starts.cG, starts.cP], cP: [starts.cP, w(7, -.1)], cF: [starts.cF, 99] };
+  for (const id of ['cF', 'cS', 'cG', 'cP']) {
+    const el = $(id), st = starts[id], pin = P(t, st, .55);
+    const x = id === 'cF' ? L4.cF + lerp(-500, 0, eOut(pin)) : lerp(L3[id], L4[id], shift);
+    const a = win(t, act[id][0], .25, act[id][1], .3), anyAct = t > starts.cS + .3;
+    const sc = lerp(.6, 1, eBack(pin)) * (1 + .045 * a) * lerp(1, .92, eIn(fOut)) * lerp(1, id === 'cF' ? 1 : .94, shift);
+    const op = clamp(pin * 2.2) * (1 - eIn(fOut));
+    el.style.left = (x - 200) + 'px'; el.style.top = CARD_TOP + 'px';
+    el.style.transform = `translateY(${lerp(260, 0, eOut(pin)) + lerp(0, 300, eIn(fOut))}px) scale(${sc})`;
+    el.style.opacity = op; el.style.visibility = op > .002 ? 'visible' : 'hidden';
+    const br = (anyAct && a < .5 ? lerp(1, .62, 1 - a) : 1) * lerp(1, .35, dimB);
+    el.style.filter = `brightness(${br})`;
+    el.style.boxShadow = `0 30px 70px rgba(0,0,0,.6),0 0 ${70 * a}px rgba(255,190,60,${.7 * a})`;
+    el.style.zIndex = a > .5 ? 3 : 1;
+    if (reveal[id]) { const rp = P(t, reveal[id], .35), np = el.querySelector('.np');
+      np.style.opacity = clamp(rp * 3); np.style.transform = `scale(${lerp(1.9, 1, eOut(rp))})`;
+      el.querySelector('.op i').style.transform = `scaleX(${eOut(P(t, reveal[id] - .2, .3))})`; }
+  }
+  { const p = P(t, w(7, -.05), .35), mv = eIO(P(t, w(7, 1.9), .55));
+    T($('burstw'), { op: clamp(p * 3) * (1 - eIn(fOut)), s: lerp(2.5, 1, eOut(p)) * lerp(1, .36, mv), x: lerp(0, 760, mv), y: lerp(0, -440, mv), r: Math.sin(t * 3) * 3 });
+    $('burst').style.transform = `rotate(${t * 25}deg)`; }
+
+  // ---- Scene H: CTA
+  const hA = win(t, 35.6, .4, 99, 1);
+  { const p = pop(t, 35.65, .7, .2), pulse = 1 + .05 * Math.max(0, Math.sin((t - w(9, 0)) * 9)) * win(t, w(9, 0), .1, w(9, 1.0), .2);
+    T($('hlogo'), { op: hA * p.op, s: p.s * pulse, r: lerp(-180, 0, eOut(P(t, 35.65, .7))) });
+    T($('hring'), { op: hA * p.op, s: p.s * pulse, r: t * 80 });
+    T($('hhalo'), { op: hA * p.op * (.75 + .25 * Math.sin(t * 4)), s: p.s }); }
+  { const p = eOut(P(t, 36.0, .5)); T($('hwm'), { op: hA * p, y: lerp(40, 0, p) }); T($('hsub'), { op: hA * eOut(P(t, 36.2, .5)), y: lerp(30, 0, eOut(P(t, 36.2, .5))) }); }
+  { const p = pop(t, w(8, 0), .45, .5); T($('hcall'), { op: hA * p.op, s: p.s }); }
+  { const p = P(t, w(8, .35), .5); T($('phone'), { op: hA * clamp(p * 2.5), s: lerp(.6, 1, eBack(p)) * (1 + .02 * Math.sin(t * 6) * (t > 41 ? 1 : 0)) });
+    // digits reveal in sync: "+91 " early, then 73198 over word 1, 33790 over word 2
+    const times = [w(8, .5), w(8, .55), w(8, .6), w(8, .6)];
+    for (let i = 0; i < 5; i++) times.push(w(8, 1.06 + i * .33));
+    times.push(w(8, 2.6));
+    for (let i = 0; i < 5; i++) times.push(w(8, 2.82 + i * .38));
+    [...PHONE].forEach((ch, i) => { const q = P(t, times[i], .22), e = $('pd' + i); e.style.opacity = clamp(q * 2); e.style.transform = `translateY(${lerp(40, 0, eBack(q))}px) scale(${lerp(.5, 1, eOut(q))})`; });
+    const rp = ((t - 36) % 1.2) / 1.2; [['pr1', rp], ['pr2', (rp + .5) % 1]].forEach(([id, q]) => { $(id).style.transform = `scale(${1 + q * .9})`; $(id).style.opacity = t > 36.3 ? (1 - q) * .8 : 0; }); }
+  { const p = pop(t, w(8, 5.15), .4, .6); T($('hvisit'), { op: hA * p.op, s: p.s }); }
+  { const p = P(t, w(8, 5.6), .45); T($('url'), { op: hA * clamp(p * 2.5), s: lerp(.6, 1, eBack(p)) });
+    const n = Math.round(clamp((t - w(8, 6.2)) / 1.75) * URLT.length);
+    $('utext').innerHTML = URLT.slice(0, n) + `<span id="caret" style="opacity:${(Math.floor(t * 2.5) % 2 === 0 || (n > 0 && n < URLT.length)) ? 1 : 0}"></span>`; }
+  { const p1 = pop(t, w(8, 8.1), .4, .5), p2 = pop(t, w(8, 8.3), .4, .5); T($('hc1'), { op: hA * p1.op, s: p1.s }); T($('hc2'), { op: hA * p2.op, s: p2.s }); }
+  { const p = P(t, w(9, 1.3), .5); T($('htag'), { op: clamp(p * 2.5), s: lerp(.4, 1, eBack(p)), y: lerp(60, 0, eOut(p)) }); }
+
+  // watermark
+  { const a = Math.max(win(t, w(3, 3.2), .4, 21.5, .3), win(t, 24.0, .4, 35.45, .3)); T($('wmk'), { op: a }); T($('wurl'), { op: .9 * a * (1 - win(t, w(4, 4.5), .3, 99, .1) * (t < 22 ? 1 : 0)) }); }
+
+  // fx canvas: sparkles
+  fx.clearRect(0, 0, 1920, 1080);
+  const cardPriceXY = id => { const x = lerp(L3[id], L4[id], shift) - 200 + 24 + 80, y = CARD_TOP + 112 + 18 + 46; return [x, y]; };
+  for (const [id, sd] of [['cS', 1], ['cG', 2], ['cP', 3]]) { const [x, y] = cardPriceXY(id); sparkBurst(fx, t, reveal[id], x, y, 12, sd, 170); }
+  sparkBurst(fx, t, w(7, 0), 960, 560, 22, 9, 380);
+  sparkBurst(fx, t, w(5, .58), 700, 470, 14, 21, 300); sparkBurst(fx, t, w(5, 1.03), 1220, 470, 14, 22, 300);
+  sparkBurst(fx, t, w(2, .0), 960, 500, 16, 31, 320);
+  sparkBurst(fx, t, w(9, 1.3), 960, 940, 18, 41, 520);
+  // ambient twinkles around headings
+  const tw = rng(77); for (let i = 0; i < 10; i++) { const x = tw() * 1920, y = tw() * 1080, ph = tw() * 6.28, sp = 1.5 + tw() * 2;
+    const a = Math.max(0, Math.sin(t * sp + ph)); if (a > .6) sparkle(fx, x, y, .35 * a, (a - .6) * 1.8); }
+  // fade out at end
+  $('vign').style.background = `radial-gradient(ellipse at center,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 100%)`;
+}
+window.render = render;
+window.END = END;
+window.ready = Promise.all([...[400,500,600,700,800,900].map(wt => document.fonts.load(wt + ' 40px Pop', 'अ₹Aa')), document.fonts.load('40px Yatra', 'दिवाली'), document.fonts.ready, ...[...document.images].map(i => i.decode())]).then(() => { render(0); return true; });
+</script>
+</body></html>
